@@ -1,0 +1,116 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &7249682050615833147
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 3274034848767671885, guid: b1a830192d47f46459d2c72124356e09,
+        type: 3}
+      propertyPath: m_Size.x
+      value: 0.3596535
+      objectReference: {fileID: 0}
+    - target: {fileID: 3274034848767671885, guid: b1a830192d47f46459d2c72124356e09,
+        type: 3}
+      propertyPath: m_Size.y
+      value: 0.5796882
+      objectReference: {fileID: 0}
+    - target: {fileID: 3274034848767671885, guid: b1a830192d47f46459d2c72124356e09,
+        type: 3}
+      propertyPath: m_Size.z
+      value: 0.3859015
+      objectReference: {fileID: 0}
+    - target: {fileID: 3274034848767671885, guid: b1a830192d47f46459d2c72124356e09,
+        type: 3}
+      propertyPath: m_Center.x
+      value: 0.022313185
+      objectReference: {fileID: 0}
+    - target: {fileID: 3274034848767671885, guid: b1a830192d47f46459d2c72124356e09,
+        type: 3}
+      propertyPath: m_Center.y
+      value: 0.0031289272
+      objectReference: {fileID: 0}
+    - target: {fileID: 3274034848767671885, guid: b1a830192d47f46459d2c72124356e09,
+        type: 3}
+      propertyPath: m_Center.z
+      value: -0.03455246
+      objectReference: {fileID: 0}
+    - target: {fileID: 3274034848767671885, guid: b1a830192d47f46459d2c72124356e09,
+        type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5110569847628786764, guid: b1a830192d47f46459d2c72124356e09,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 1a95b4d85bef39b45b339a6dd5b15a5c, type: 2}
+    - target: {fileID: 5110569847628786766, guid: b1a830192d47f46459d2c72124356e09,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5110569847628786766, guid: b1a830192d47f46459d2c72124356e09,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5110569847628786766, guid: b1a830192d47f46459d2c72124356e09,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5110569847628786766, guid: b1a830192d47f46459d2c72124356e09,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5110569847628786766, guid: b1a830192d47f46459d2c72124356e09,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5110569847628786766, guid: b1a830192d47f46459d2c72124356e09,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5110569847628786766, guid: b1a830192d47f46459d2c72124356e09,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5110569847628786766, guid: b1a830192d47f46459d2c72124356e09,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5110569847628786766, guid: b1a830192d47f46459d2c72124356e09,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5110569847628786766, guid: b1a830192d47f46459d2c72124356e09,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5110569847628786766, guid: b1a830192d47f46459d2c72124356e09,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5110569847628786802, guid: b1a830192d47f46459d2c72124356e09,
+        type: 3}
+      propertyPath: m_Name
+      value: EvilVaccine
+      objectReference: {fileID: 0}
+    - target: {fileID: 5110569847628786802, guid: b1a830192d47f46459d2c72124356e09,
+        type: 3}
+      propertyPath: m_TagString
+      value: Virus
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: b1a830192d47f46459d2c72124356e09, type: 3}
