@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
+using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour
 {
@@ -34,14 +36,9 @@ public class Player : MonoBehaviour
     [Header("Player Settings")]
     [SerializeField] 
     private int _lives = 3;
-
-
-    
     
     private float _canVaccinate = -1f;
     private bool _isUVOn = false;
-    
-    
     
     
     // called before  first frame update
@@ -58,15 +55,31 @@ public class Player : MonoBehaviour
        PlayerMovement();
        PlayerBoundaries();
        Vaccinate();
+       // LoadMenuScene();
     }
 
+
+    /*private void LoadMenuScene()
+    {
+        if (_lives <= 0)
+        {
+            StartCoroutine("BackToMenu");
+        }
+    }
+
+    IEnumerator BackToMenu()
+    {
+        yield return new WaitForSeconds(2f);
+        SceneManager.LoadScene("Menu");
+    }*/
+    
     // player damage
     public void Damage()
     {
         //reduce _lives by one
         _lives -= 1;
         _uiManager.UpdateHealth(_lives);
-        if (_lives == 0)
+        if (_lives <= 0)
         {
             if (_spawnMananger != null)
             {
@@ -76,13 +89,14 @@ public class Player : MonoBehaviour
             {
                 Debug.LogError("assign the spawn manager! else null reference error...");
             }
+
             _uiManager.ShowGameOver();
             Destroy(this.gameObject);
             Destroy(_spawnMananger.gameObject);
         }
     }
-    
-    public void RelayScore(int score)
+
+  public void RelayScore(int score)
     {
         _uiManager.AddScore(score);
     }
@@ -148,4 +162,6 @@ public class Player : MonoBehaviour
         yield return new WaitForSeconds(_powerUpTimeout);
         _isUVOn = false;
     }
+
+   
 }
