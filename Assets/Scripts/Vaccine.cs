@@ -31,7 +31,7 @@ public class Vaccine : MonoBehaviour
            }
        }
    }
-   void OnTriggerEnter(Collider other)
+   void OnTriggerEnter(Collider other) 
    {
        //if player is hit deal damage or kill
        if (other.CompareTag("Player"))

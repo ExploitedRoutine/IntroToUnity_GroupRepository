@@ -16,6 +16,9 @@ public class Player : MonoBehaviour
 
     [SerializeField] 
     private GameObject _vaccinePrefab;
+
+    [SerializeField]
+    private GameObject _addLivePrefab; 
     
     [SerializeField] 
     private SpawnManager _spawnMananger;
@@ -39,7 +42,13 @@ public class Player : MonoBehaviour
     
     
     private float _canVaccinate = -1f;
+    [Header("PowerUp Settings")]
+    [SerializeField]
     private bool _isUVOn = false;
+
+    
+    
+    //[SerializeField] private bool _addLive = false;
     
     
     
@@ -48,6 +57,7 @@ public class Player : MonoBehaviour
     void Start()
     {
         _isUVOn = false;
+        
         transform.position = new Vector3(0f, 0f, 0f);
     }
 
@@ -80,6 +90,11 @@ public class Player : MonoBehaviour
             Destroy(this.gameObject);
             Destroy(_spawnMananger.gameObject);
         }
+    }
+    
+    public void AddLive(int extraLives)
+    {
+        _lives += extraLives;
     }
     
     public void RelayScore(int score)
@@ -139,6 +154,7 @@ public class Player : MonoBehaviour
 
     public void ActivatePowerUp()
     {
+        
         _isUVOn = true;
         StartCoroutine(DeactivatePowerUp());
     }
