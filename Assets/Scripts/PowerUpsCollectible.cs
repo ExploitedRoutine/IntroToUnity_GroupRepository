@@ -24,16 +24,19 @@ public class PowerUpsCollectible : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-
-        if (name.Contains("AddLive"))
-        {
-            GameObject.FindWithTag("Player").GetComponent<Player>().AddLive(extraLives);
-        }
-
-        if (name.Contains("UV Powerup"))
-        {
-            Destroy(this.gameObject);
-            other.GetComponent<Player>().ActivatePowerUp(); 
+        if (other.CompareTag("Player"))
+        { 
+            if (name.Contains("AddLive")) 
+            
+            { 
+                GameObject.FindWithTag("Player").GetComponent<Player>().AddLive(extraLives);  
+                Destroy(this.gameObject); 
+            } 
+            if (name.Contains("UV Powerup")) 
+            { 
+                Destroy(this.gameObject); 
+                other.GetComponent<Player>().ActivatePowerUp(); 
+            }
         }
     }
 }

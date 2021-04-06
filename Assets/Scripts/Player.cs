@@ -17,8 +17,8 @@ public class Player : MonoBehaviour
     [SerializeField] 
     private GameObject _vaccinePrefab;
 
-    [SerializeField]
-    private GameObject _addLivePrefab; 
+    //[SerializeField]
+    //private GameObject _addLivePrefab; 
     
     [SerializeField] 
     private SpawnManager _spawnMananger;
@@ -26,8 +26,7 @@ public class Player : MonoBehaviour
     [Header("Vaccine Parameters")]
     [SerializeField] 
     private float _vaccinationRate = 0.3f;
-    
-    
+
     [SerializeField] 
     private float _powerUpTimeout = 5f;
 
@@ -94,7 +93,10 @@ public class Player : MonoBehaviour
     
     public void AddLive(int extraLives)
     {
+        Debug.Log("addlives called");
         _lives += extraLives;
+        _uiManager.UpdateHealth(_lives);
+        
     }
     
     public void RelayScore(int score)

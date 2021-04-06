@@ -92,20 +92,23 @@ public class SpawnManager : MonoBehaviour
     
     IEnumerator SpawnSystem()
     {
-        // this expression is true as long as the game is running.
-        while (_spawningOn && _coronaSpawnOn)
+        if (!_spawningOn) yield break;
+        while (_coronaSpawnOn)
         {
-            Random.Range(0f, 1f);
+            //Random.Range(0f, 1f);
             // spawn a new virus
             Instantiate(_virusPrefabs[SelectVirusIndex()], new Vector3(Random.Range(-8.5f, 8.5f), 4.5f, 0f), Quaternion.identity, this.transform);
             // suspend execution for 2 seconds
             yield return new WaitForSeconds(_delay);
         }
+        // this expression is true as long as the game is running.
+
     }
 
     IEnumerator SpawnPowerUp()
     {
-        while (_spawningOn && _powerupSpawnOn)
+        if (!_spawningOn) yield break;
+        while (_powerupSpawnOn)
         {
             Instantiate(_powerupPrefabs[SelectPowerupIndex()], new Vector3(Random.Range(-8.5f, 8.5f), 4.5f, 0f), Quaternion.identity, this.transform);
             yield return new WaitForSeconds(_powerUpsSpawnRate);
