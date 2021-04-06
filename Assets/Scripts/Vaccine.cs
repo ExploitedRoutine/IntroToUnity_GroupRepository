@@ -31,13 +31,14 @@ public class Vaccine : MonoBehaviour
            }
        }
    }
-   void OnTriggerEnter(Collider other)
+   void OnTriggerEnter(Collider other) 
    {
        //if player is hit deal damage or kill
-       if (other.CompareTag("Player"))
+       if (other.CompareTag("Player") && name.Contains("Evil"))
        {
-           //other.GetComponent<Player>().Damage();
-           //estroy(this.gameObject);
+           other.GetComponent<Player>().Damage();
+           GameObject.FindWithTag("Player").GetComponent<Player>().RelayScore(1);
+           Destroy(this.gameObject);
        }
        //if vaccine is hit destroy it and the vaccine, If its UV light just destroy virus
        else if (other.CompareTag("Vaccine"))
