@@ -906,8 +906,8 @@ MonoBehaviour:
   - {fileID: 3700642856524345958, guid: bc38c512516e5b34ead03829108f25c0, type: 3}
   - {fileID: 3233480811007628989, guid: 5cadaef725de96842a6dc23c1e9cfdc7, type: 3}
   _powerupPrefabs: []
-  _delay: 1
-  _powerUpsSpawnRate: 3
+  _delay: 50
+  _powerUpsSpawnRate: 1
   _normalCoronaSpawnChance: 0
   _chanceModifier: 0.01
   _spawningOn: 1
