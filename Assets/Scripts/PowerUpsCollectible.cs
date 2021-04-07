@@ -9,12 +9,22 @@ public class PowerUpsCollectible : MonoBehaviour
     [SerializeField] 
     private float _speed = 2f;
 
-    [SerializeField] private int extraLives = 1;
+    [SerializeField]
+    private int extraLives = 1;
+    
+    [SerializeField] 
+    private float _spinSpeed = 20f;
     
     // called once per frame
     void Update()
     {
         transform.Translate(Vector3.down * _speed * Time.deltaTime);
+        
+        
+        if (name.Contains("AddLive") ||  name.Contains("UV Powerup"))
+        {
+            transform.Rotate(new Vector3(0f, _spinSpeed * Time.deltaTime, 0f), Space.Self);
+        }
        
         if (transform.position.y < -4.5f)
         {

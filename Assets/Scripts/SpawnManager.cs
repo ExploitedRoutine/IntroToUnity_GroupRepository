@@ -97,7 +97,7 @@ public class SpawnManager : MonoBehaviour
         {
             //Random.Range(0f, 1f);
             // spawn a new virus
-            Instantiate(_virusPrefabs[SelectVirusIndex()], new Vector3(Random.Range(-8.5f, 8.5f), 4.5f, 0f), Quaternion.identity, this.transform);
+            Instantiate(_virusPrefabs[SelectVirusIndex()], new Vector3(Random.Range(-6.0f, 6.0f), 4.5f, 0f), Quaternion.identity, this.transform);
             // suspend execution for 2 seconds
             yield return new WaitForSeconds(_delay);
         }
@@ -110,7 +110,7 @@ public class SpawnManager : MonoBehaviour
         if (!_spawningOn) yield break;
         while (_powerupSpawnOn)
         {
-            Instantiate(_powerupPrefabs[SelectPowerupIndex()], new Vector3(Random.Range(-8.5f, 8.5f), 4.5f, 0f), Quaternion.identity, this.transform);
+            Instantiate(_powerupPrefabs[SelectPowerupIndex()], new Vector3(Random.Range(-6.0f, 6.0f), 4.5f, 0f), Quaternion.identity, this.transform);
             yield return new WaitForSeconds(_powerUpsSpawnRate);
         }
     }

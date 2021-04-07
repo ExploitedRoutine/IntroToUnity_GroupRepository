@@ -9,11 +9,23 @@ public class Vaccine : MonoBehaviour
     [SerializeField] 
     private float _vaccineSpeed = 7f;
     
+    
+    [SerializeField] 
+    private float _spinSpeed = 20f;
+    
+    [SerializeField] 
+    private bool _rotationOn = true;
+    
     //[SerializeField] 
     //private float _rotationspeed = 150f;
     
    void Update()
    {
+       
+       if (_rotationOn)
+       {
+           transform.Rotate(new Vector3(0f, _spinSpeed * Time.deltaTime, 0f), Space.Self);
+       }
        if (CompareTag("Vaccine"))
        {
            transform.Translate(Vector3.up * (Time.deltaTime * _vaccineSpeed));

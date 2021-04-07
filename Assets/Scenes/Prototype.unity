@@ -413,7 +413,7 @@ Transform:
   m_GameObject: {fileID: 851060656}
   m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.35, y: 0.35, z: 0.35}
+  m_LocalScale: {x: 0.3, y: 0.3, z: 0.3}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 3
@@ -906,11 +906,11 @@ MonoBehaviour:
   - {fileID: 8667414941288445022, guid: 44d77dfe7f089cf41ae0fb5e1a32dc6e, type: 3}
   - {fileID: 6163400367724597075, guid: 09b1442ed7444d9438304a8115665b15, type: 3}
   _delay: 1
-  _powerUpsSpawnRate: 10
+  _powerUpsSpawnRate: 2
   _normalCoronaSpawnChance: 0
   _chanceModifier: 0.2
   _spawningOn: 1
-  _coronaSpawnOn: 1
+  _coronaSpawnOn: 0
   _powerupSpawnOn: 1
 --- !u!1 &2081697052
 GameObject:
