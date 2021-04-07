@@ -13,7 +13,7 @@ public class PowerUpsCollectible : MonoBehaviour
     private int extraLives = 1;
 
     [SerializeField]
-    private int increaseSpeed = 5;
+    public int increaseSpeed = 5;
     
     [SerializeField] 
     private float _spinSpeed = 20f;

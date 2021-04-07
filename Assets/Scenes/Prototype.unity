@@ -907,11 +907,11 @@ MonoBehaviour:
   - {fileID: 6163400367724597075, guid: 09b1442ed7444d9438304a8115665b15, type: 3}
   - {fileID: 7321737095250070314, guid: e6d3137144f9c944c943f0201ceea0dd, type: 3}
   _delay: 1
-  _powerUpsSpawnRate: 2
+  _powerUpsSpawnRate: 10
   _normalCoronaSpawnChance: 0
   _chanceModifier: 0.2
   _spawningOn: 1
-  _coronaSpawnOn: 0
+  _coronaSpawnOn: 1
   _powerupSpawnOn: 1
 --- !u!1 &2081697052
 GameObject:

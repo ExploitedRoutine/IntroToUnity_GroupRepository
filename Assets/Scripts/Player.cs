@@ -166,7 +166,12 @@ public class Player : MonoBehaviour
         _isUVOn = true;
         StartCoroutine(DeactivatePowerUp());
     }
-
+    
+    IEnumerator DeactivatePowerUp()
+    {
+        yield return new WaitForSeconds(_powerUpTimeout);
+        _isUVOn = false;
+    }
 
     public void SpeedUp(int increaseSpeed)
     {
@@ -179,13 +184,11 @@ public class Player : MonoBehaviour
     IEnumerator DeactivateSpeedUp()
     {
         yield return new WaitForSeconds(_powerUpTimeout);
-        _speed -= 5;
-
+        _speed -= GameObject.FindWithTag("Powerup").GetComponent<PowerUpsCollectible>().increaseSpeed;  
+        
+        //problem remains this debug gives out that increased speed is 5 and not 7
+        Debug.Log("increasedSpeed = " + GameObject.FindWithTag("Powerup").GetComponent<PowerUpsCollectible>().increaseSpeed);
     }
 
-    IEnumerator DeactivatePowerUp()
-    {
-        yield return new WaitForSeconds(_powerUpTimeout);
-        _isUVOn = false;
-    }
+    
 }
