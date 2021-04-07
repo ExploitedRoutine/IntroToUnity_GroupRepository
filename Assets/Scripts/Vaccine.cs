@@ -22,7 +22,7 @@ public class Vaccine : MonoBehaviour
    void Update()
    {
        
-       if (_rotationOn)
+       if (_rotationOn && !name.Contains("UVLight"))
        {
            transform.Rotate(new Vector3(0f, _spinSpeed * Time.deltaTime, 0f), Space.Self);
        }

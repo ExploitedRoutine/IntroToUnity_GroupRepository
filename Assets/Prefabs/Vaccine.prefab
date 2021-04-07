@@ -113,7 +113,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _vaccineSpeed: 7
-  _spinSpeed: 20
+  _spinSpeed: 50
   _rotationOn: 1
 --- !u!65 &3274034848767671885
 BoxCollider:

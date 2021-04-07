@@ -36,20 +36,18 @@ public class Player : MonoBehaviour
     [Header("Player Settings")]
     [SerializeField] 
     private int _lives = 3;
-
-
-    
     
     private float _canVaccinate = -1f;
+    
+    
+    //used for player spin/rotation, not functional atm
+    //[SerializeField]
+    //private float _spinSpeed = 6;
+    
     [Header("PowerUp Settings")]
     [SerializeField]
     private bool _isUVOn = false;
 
-    
-    
-    //[SerializeField] private bool _addLive = false;
-    
-    
     
     
     // called before  first frame update
@@ -98,6 +96,8 @@ public class Player : MonoBehaviour
         _uiManager.UpdateHealth(_lives);
         
     }
+
+    
     
     public void RelayScore(int score)
     {
@@ -110,8 +110,12 @@ public class Player : MonoBehaviour
        float horizontalInput = Input.GetAxis("Horizontal");
        float verticalInput = Input.GetAxis("Vertical");
        
+       
+       //transform.Rotate(new Vector3(0f,horizontalInput* _spinSpeed * Time.deltaTime, 0f), Space.Self);
+       
        Vector3 playerTranslate = new Vector3(1f * horizontalInput * _speed * Time.deltaTime, 0f, 1f * verticalInput * _speed * Time.deltaTime);
-        transform.Translate(playerTranslate);
+        
+       transform.Translate(playerTranslate);
     }
 
     // on space "shoot" vaccine or UV light (currently) 
@@ -147,10 +151,12 @@ public class Player : MonoBehaviour
         if (transform.position.x < -6.5f)
         {
             transform.position = new Vector3(6.5f, transform.position.y, 0);
+            //transform.rotation = Quaternion.identity;
         }
         else if (transform.position.x > 6.5f)
         {
             transform.position = new Vector3(-6.5f, transform.position.y, 0);
+            //transform.rotation = Quaternion.identity;
         }
     }
 
@@ -159,6 +165,22 @@ public class Player : MonoBehaviour
         
         _isUVOn = true;
         StartCoroutine(DeactivatePowerUp());
+    }
+
+
+    public void SpeedUp(int increaseSpeed)
+    {
+        StartCoroutine(DeactivateSpeedUp());
+        _speed += increaseSpeed;
+        
+        
+        
+    }
+    IEnumerator DeactivateSpeedUp()
+    {
+        yield return new WaitForSeconds(_powerUpTimeout);
+        _speed -= 5;
+
     }
 
     IEnumerator DeactivatePowerUp()

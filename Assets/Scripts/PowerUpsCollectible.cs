@@ -11,6 +11,9 @@ public class PowerUpsCollectible : MonoBehaviour
 
     [SerializeField]
     private int extraLives = 1;
+
+    [SerializeField]
+    private int increaseSpeed = 5;
     
     [SerializeField] 
     private float _spinSpeed = 20f;
@@ -21,7 +24,7 @@ public class PowerUpsCollectible : MonoBehaviour
         transform.Translate(Vector3.down * _speed * Time.deltaTime);
         
         
-        if (name.Contains("AddLive") ||  name.Contains("UV Powerup"))
+        if (!name.Contains("AddLive"))
         {
             transform.Rotate(new Vector3(0f, _spinSpeed * Time.deltaTime, 0f), Space.Self);
         }
@@ -46,6 +49,13 @@ public class PowerUpsCollectible : MonoBehaviour
             { 
                 Destroy(this.gameObject); 
                 other.GetComponent<Player>().ActivatePowerUp(); 
+            }
+
+            if (name.Contains("SpeedUp_Powerup"))
+            {
+                // call public function from player 
+                Destroy(this.gameObject); 
+                other.GetComponent<Player>().SpeedUp(increaseSpeed);
             }
         }
     }
