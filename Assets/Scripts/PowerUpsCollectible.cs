@@ -70,6 +70,13 @@ public class PowerUpsCollectible : MonoBehaviour
                 Destroy(this.gameObject);
                 other.GetComponent<Player>().SlowDown(manipulateSpeed);
             }
+
+
+            if (name.Contains("Shield_Powerup"))
+            {
+                Destroy(this.gameObject);
+                other.GetComponent<Player>().ActivateShield();
+            }
             
             //Random powerupfunction
             if (name.Contains("Random_Powerup"))

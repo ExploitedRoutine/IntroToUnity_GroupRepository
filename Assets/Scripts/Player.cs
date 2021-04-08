@@ -19,6 +19,9 @@ public class Player : MonoBehaviour
     [SerializeField] 
     private GameObject _vaccinePrefab;
 
+    [SerializeField] 
+    private GameObject _shieldPrefab;
+
     //[SerializeField]
     //private GameObject _addLivePrefab; 
     
@@ -50,6 +53,8 @@ public class Player : MonoBehaviour
     [SerializeField]
     private bool _isUVOn = false;
 
+    [SerializeField]
+    private bool _isShieldOn = false;
     
     
     // called before  first frame update
@@ -90,6 +95,13 @@ public class Player : MonoBehaviour
     {
         //reduce _lives by one
         _lives -= 1;
+        
+        if (!_isShieldOn)
+        {
+            _isShieldOn = false;
+            Destroy(_shieldPrefab.gameObject);
+        }
+        
         _uiManager.UpdateHealth(_lives);
         if (_lives <= 0)
         {
@@ -173,8 +185,15 @@ public class Player : MonoBehaviour
         }
     }
 
-    
-    
+
+    public void ActivateShield()
+    {
+        //shieldPrefab does not yet exist
+        _isShieldOn = true;
+        Instantiate(_shieldPrefab, transform.position + new Vector3(0f, 0f, 0f), Quaternion.identity, this.gameObject.transform);  
+        _lives++;
+        
+    }
     
     
     // Here start the PowerUp functions
