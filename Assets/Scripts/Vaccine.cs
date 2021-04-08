@@ -60,7 +60,7 @@ public class Vaccine : MonoBehaviour
            {
                Destroy(other.gameObject);
            }
-           else if (!name.Contains("Coronavirus501V2"))
+           else if (!other.name.Contains("Coronavirus501V2"))
            
            {
                if (name.Contains("B117"))

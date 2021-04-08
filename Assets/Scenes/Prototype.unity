@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.3561125, g: 0.3574543, b: 0.3255416, a: 1}
+  m_IndirectSpecularColor: {r: 0.35611284, g: 0.3574544, b: 0.32554182, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -218,6 +218,7 @@ RectTransform:
   - {fileID: 1219911617}
   - {fileID: 837318624}
   - {fileID: 2088627281}
+  - {fileID: 2081697053}
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -898,7 +899,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _virusPrefabs:
+  - {fileID: 8648252076479157253, guid: 33fda82d499f02e488c938fb98eb592a, type: 3}
   - {fileID: 4194036090030539871, guid: 4747f77f943d595439e4981f56f5a4b3, type: 3}
+  - {fileID: 1143337170452844190, guid: 0597e15dfafc1954080012bf6e533865, type: 3}
   _powerupPrefabs:
   - {fileID: 8667414941288445022, guid: 44d77dfe7f089cf41ae0fb5e1a32dc6e, type: 3}
   - {fileID: 6163400367724597075, guid: 09b1442ed7444d9438304a8115665b15, type: 3}
@@ -942,7 +945,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 773377746}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}

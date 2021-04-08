@@ -118,6 +118,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _speed: 2
   extraLives: 1
+  manipulateSpeed: 5
+  _spinSpeed: 20
 --- !u!54 &3117306518227902897
 Rigidbody:
   m_ObjectHideFlags: 0

@@ -19,7 +19,12 @@ public class PowerUpsCollectible : MonoBehaviour
     
     [SerializeField] 
     private float _spinSpeed = 20f;
-    
+
+    private void Start()
+    {
+        //rotate addLife object by 90° 
+    }
+
     // called once per frame
     void Update()
     {
