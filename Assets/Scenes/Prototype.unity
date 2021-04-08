@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.35611284, g: 0.3574544, b: 0.32554182, a: 1}
+  m_IndirectSpecularColor: {r: 0.3561125, g: 0.3574543, b: 0.3255416, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -412,7 +412,7 @@ Transform:
   m_GameObject: {fileID: 851060656}
   m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.35, y: 0.35, z: 0.35}
+  m_LocalScale: {x: 0.3, y: 0.3, z: 0.3}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 3
@@ -440,7 +440,7 @@ MonoBehaviour:
   _powerUpTimeout: 5
   _vaccines: {fileID: 1194254246}
   _lives: 3
-  _gameOverMenuDelay: 1
+  _isUVOn: 0
 --- !u!1 &853350230
 GameObject:
   m_ObjectHideFlags: 0
@@ -897,16 +897,100 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 54fdb76608b45b949a1c90e8578749c5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _UVLightPrefab: {fileID: 8667414941288445022, guid: 44d77dfe7f089cf41ae0fb5e1a32dc6e,
-    type: 3}
-  _delay: 1
-  _powerUpsSpawnRate: 15
   _virusPrefabs:
-  - {fileID: 1679355273914760848, guid: f594960814230c844a58accbd1ab8097, type: 3}
-  - {fileID: 7574701622751283644, guid: 47729927f2a2f4447868b8d83048db5f, type: 3}
-  - {fileID: 3700642856524345958, guid: bc38c512516e5b34ead03829108f25c0, type: 3}
+  - {fileID: 4194036090030539871, guid: 4747f77f943d595439e4981f56f5a4b3, type: 3}
+  _powerupPrefabs:
+  - {fileID: 8667414941288445022, guid: 44d77dfe7f089cf41ae0fb5e1a32dc6e, type: 3}
+  - {fileID: 6163400367724597075, guid: 09b1442ed7444d9438304a8115665b15, type: 3}
+  - {fileID: 7321737095250070314, guid: e6d3137144f9c944c943f0201ceea0dd, type: 3}
+  - {fileID: 3077341228112937560, guid: 41dbc95e91202914495ed1a2bd9501f0, type: 3}
+  - {fileID: 5923000844506137882, guid: 8af99eae3fe13dc4f8095710986b99e3, type: 3}
+  _delay: 3
+  _powerUpsSpawnRate: 8
   _normalCoronaSpawnChance: 0
-  _chanceModifier: 0.01
+  _chanceModifier: 0.03
+  _spawningOn: 1
+  _coronaSpawnOn: 1
+  _powerupSpawnOn: 1
+--- !u!1 &2081697052
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2081697053}
+  - component: {fileID: 2081697055}
+  - component: {fileID: 2081697054}
+  m_Layer: 5
+  m_Name: Version
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &2081697053
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2081697052}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 773377746}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 100, y: 3}
+  m_SizeDelta: {x: 160, y: 30}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &2081697054
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2081697052}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0.8301887, g: 0.8301887, b: 0.8301887, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_FontData:
+    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_FontSize: 8
+    m_FontStyle: 0
+    m_BestFit: 0
+    m_MinSize: 0
+    m_MaxSize: 40
+    m_Alignment: 0
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: 'Version: 1.0'
+--- !u!222 &2081697055
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2081697052}
+  m_CullTransparentMesh: 0
 --- !u!1 &2088627278
 GameObject:
   m_ObjectHideFlags: 0

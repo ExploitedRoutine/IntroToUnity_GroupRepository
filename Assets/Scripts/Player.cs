@@ -18,6 +18,9 @@ public class Player : MonoBehaviour
 
     [SerializeField] 
     private GameObject _vaccinePrefab;
+
+    //[SerializeField]
+    //private GameObject _addLivePrefab; 
     
     [SerializeField] 
     private SpawnManager _spawnMananger;
@@ -25,8 +28,7 @@ public class Player : MonoBehaviour
     [Header("Vaccine Parameters")]
     [SerializeField] 
     private float _vaccinationRate = 0.3f;
-    
-    
+
     [SerializeField] 
     private float _powerUpTimeout = 5f;
 
@@ -38,13 +40,23 @@ public class Player : MonoBehaviour
     private int _lives = 3;
     
     private float _canVaccinate = -1f;
+    
+    
+    //used for player spin/rotation, not functional atm
+    //[SerializeField]
+    //private float _spinSpeed = 6;
+    
+    [Header("PowerUp Settings")]
+    [SerializeField]
     private bool _isUVOn = false;
+
     
     
     // called before  first frame update
     void Start()
     {
         _isUVOn = false;
+        
         transform.position = new Vector3(0f, 0f, 0f);
     }
 
@@ -95,8 +107,12 @@ public class Player : MonoBehaviour
             Destroy(_spawnMananger.gameObject);
         }
     }
+    
+   
 
-  public void RelayScore(int score)
+    
+    
+    public void RelayScore(int score)
     {
         _uiManager.AddScore(score);
     }
@@ -107,8 +123,12 @@ public class Player : MonoBehaviour
        float horizontalInput = Input.GetAxis("Horizontal");
        float verticalInput = Input.GetAxis("Vertical");
        
+       
+       //transform.Rotate(new Vector3(0f,horizontalInput* _spinSpeed * Time.deltaTime, 0f), Space.Self);
+       
        Vector3 playerTranslate = new Vector3(1f * horizontalInput * _speed * Time.deltaTime, 0f, 1f * verticalInput * _speed * Time.deltaTime);
-        transform.Translate(playerTranslate);
+        
+       transform.Translate(playerTranslate);
     }
 
     // on space "shoot" vaccine or UV light (currently) 
@@ -141,27 +161,82 @@ public class Player : MonoBehaviour
         {
             transform.position = new Vector3(transform.position.x, -4.5f, 0);
         }
-        if (transform.position.x < -8.5f)
+        if (transform.position.x < -6.5f)
         {
-            transform.position = new Vector3(8.5f, transform.position.y, 0);
+            transform.position = new Vector3(6.5f, transform.position.y, 0);
+            //transform.rotation = Quaternion.identity;
         }
-        else if (transform.position.x > 8.5f)
+        else if (transform.position.x > 6.5f)
         {
-            transform.position = new Vector3(-8.5f, transform.position.y, 0);
+            transform.position = new Vector3(-6.5f, transform.position.y, 0);
+            //transform.rotation = Quaternion.identity;
         }
     }
 
+    
+    
+    
+    
+    // Here start the PowerUp functions
+    
+    // add live with first aid kit
+    public void AddLive(int extraLives)
+    {
+        Debug.Log("addlives called");
+        _lives += extraLives;
+        _uiManager.UpdateHealth(_lives);
+        
+    }
+    
+    // for now this is the one with the crate and the UV light
     public void ActivatePowerUp()
     {
+        
         _isUVOn = true;
         StartCoroutine(DeactivatePowerUp());
     }
-
+    
     IEnumerator DeactivatePowerUp()
     {
         yield return new WaitForSeconds(_powerUpTimeout);
         _isUVOn = false;
     }
 
+    
+    // speed up - Coffee cup
+    public void SpeedUp(int manipulateSpeed)
+    {
+        StartCoroutine(DeactivateSpeedUp());
+        _speed += manipulateSpeed;
+        
+        
+        
+    }
    
+    IEnumerator DeactivateSpeedUp()
+    {
+        yield return new WaitForSeconds(_powerUpTimeout);
+        _speed -= GameObject.FindWithTag("Powerup").GetComponent<PowerUpsCollectible>().manipulateSpeed;
+        //_speed -= gameObject.GetComponent<PowerUpsCollectible>().manipulateSpeed;
+        //problem remains this debug gives out that increased speed is 5 and not 7
+        //could be fixed by attaching another gameobject to this script but not a nice solution
+        
+        Debug.Log("increasedSpeed = " + GameObject.FindWithTag("Powerup").GetComponent<PowerUpsCollectible>().manipulateSpeed);
+    }
+
+    public void SlowDown(int manipulateSpeed)
+    {
+        StartCoroutine(DeactivateSlowDown());
+        _speed -= manipulateSpeed;
+        if (_speed < 0)
+        {
+            _speed = 0;
+        }
+    }
+    IEnumerator DeactivateSlowDown()
+    {
+        yield return new WaitForSeconds(_powerUpTimeout);
+        _speed += GameObject.FindWithTag("Powerup").GetComponent<PowerUpsCollectible>().manipulateSpeed;
+        Debug.Log("manipulateSpeed = " + GameObject.FindWithTag("Powerup").GetComponent<PowerUpsCollectible>().manipulateSpeed);
+    }
 }
