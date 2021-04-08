@@ -899,17 +899,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _virusPrefabs:
-  - {fileID: 1679355273914760848, guid: f594960814230c844a58accbd1ab8097, type: 3}
-  - {fileID: 7574701622751283644, guid: 47729927f2a2f4447868b8d83048db5f, type: 3}
-  - {fileID: 3700642856524345958, guid: bc38c512516e5b34ead03829108f25c0, type: 3}
+  - {fileID: 4194036090030539871, guid: 4747f77f943d595439e4981f56f5a4b3, type: 3}
   _powerupPrefabs:
   - {fileID: 8667414941288445022, guid: 44d77dfe7f089cf41ae0fb5e1a32dc6e, type: 3}
   - {fileID: 6163400367724597075, guid: 09b1442ed7444d9438304a8115665b15, type: 3}
   - {fileID: 7321737095250070314, guid: e6d3137144f9c944c943f0201ceea0dd, type: 3}
-  _delay: 1
-  _powerUpsSpawnRate: 10
+  - {fileID: 3077341228112937560, guid: 41dbc95e91202914495ed1a2bd9501f0, type: 3}
+  - {fileID: 5923000844506137882, guid: 8af99eae3fe13dc4f8095710986b99e3, type: 3}
+  _delay: 3
+  _powerUpsSpawnRate: 8
   _normalCoronaSpawnChance: 0
-  _chanceModifier: 0.2
+  _chanceModifier: 0.03
   _spawningOn: 1
   _coronaSpawnOn: 1
   _powerupSpawnOn: 1

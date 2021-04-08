@@ -52,6 +52,31 @@ public class Vaccine : MonoBehaviour
            GameObject.FindWithTag("Player").GetComponent<Player>().RelayScore(1);
            Destroy(this.gameObject);
        }
+
+       if (other.CompareTag("Virus"))
+       {
+           
+           if (name.Contains("UVLight"))
+           {
+               Destroy(other.gameObject);
+           }
+           else if (!name.Contains("Coronavirus501V2"))
+           
+           {
+               if (name.Contains("B117"))
+               {
+                   GameObject.FindWithTag("Player").GetComponent<Player>().RelayScore(3);
+               }
+               else
+               {
+                   GameObject.FindWithTag("Player").GetComponent<Player>().RelayScore(1);
+               }
+               
+               Destroy(this.gameObject);
+               Destroy(other.gameObject);
+           }
+           
+       }
        //if vaccine is hit destroy it and the vaccine, If its UV light just destroy virus
        else if (other.CompareTag("Vaccine"))
        {
@@ -60,14 +85,14 @@ public class Vaccine : MonoBehaviour
                Destroy(other.gameObject);
            }
    
-           if(name.Contains("B117"))
+           /*if(name.Contains("B117"))
            {
                GameObject.FindWithTag("Player").GetComponent<Player>().RelayScore(3);
            }
            else
            {
                GameObject.FindWithTag("Player").GetComponent<Player>().RelayScore(1);
-           }
+           } */
             
            Destroy(this.gameObject);
        }

@@ -1,0 +1,96 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &8635986984730663579
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 3126738287404786803, guid: 33fda82d499f02e488c938fb98eb592a,
+        type: 3}
+      propertyPath: _horizontalVirusSpeed
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 7134896984334054864, guid: 33fda82d499f02e488c938fb98eb592a,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 27b7fe7e3a96ea54f8f488a7cdca7203, type: 2}
+    - target: {fileID: 8308881681325182655, guid: 33fda82d499f02e488c938fb98eb592a,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8308881681325182655, guid: 33fda82d499f02e488c938fb98eb592a,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 8308881681325182655, guid: 33fda82d499f02e488c938fb98eb592a,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 8308881681325182655, guid: 33fda82d499f02e488c938fb98eb592a,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 8308881681325182655, guid: 33fda82d499f02e488c938fb98eb592a,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8308881681325182655, guid: 33fda82d499f02e488c938fb98eb592a,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 3.16
+      objectReference: {fileID: 0}
+    - target: {fileID: 8308881681325182655, guid: 33fda82d499f02e488c938fb98eb592a,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8308881681325182655, guid: 33fda82d499f02e488c938fb98eb592a,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071067
+      objectReference: {fileID: 0}
+    - target: {fileID: 8308881681325182655, guid: 33fda82d499f02e488c938fb98eb592a,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 8308881681325182655, guid: 33fda82d499f02e488c938fb98eb592a,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8308881681325182655, guid: 33fda82d499f02e488c938fb98eb592a,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8308881681325182655, guid: 33fda82d499f02e488c938fb98eb592a,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8308881681325182655, guid: 33fda82d499f02e488c938fb98eb592a,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8308881681325182655, guid: 33fda82d499f02e488c938fb98eb592a,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8648252076479157253, guid: 33fda82d499f02e488c938fb98eb592a,
+        type: 3}
+      propertyPath: m_Name
+      value: CoronavirusB117
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 33fda82d499f02e488c938fb98eb592a, type: 3}

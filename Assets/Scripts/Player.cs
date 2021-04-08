@@ -89,13 +89,7 @@ public class Player : MonoBehaviour
         }
     }
     
-    public void AddLive(int extraLives)
-    {
-        Debug.Log("addlives called");
-        _lives += extraLives;
-        _uiManager.UpdateHealth(_lives);
-        
-    }
+   
 
     
     
@@ -160,6 +154,22 @@ public class Player : MonoBehaviour
         }
     }
 
+    
+    
+    
+    
+    // Here start the PowerUp functions
+    
+    // add live with first aid kit
+    public void AddLive(int extraLives)
+    {
+        Debug.Log("addlives called");
+        _lives += extraLives;
+        _uiManager.UpdateHealth(_lives);
+        
+    }
+    
+    // for now this is the one with the crate and the UV light
     public void ActivatePowerUp()
     {
         
@@ -173,22 +183,41 @@ public class Player : MonoBehaviour
         _isUVOn = false;
     }
 
-    public void SpeedUp(int increaseSpeed)
+    
+    // speed up - Coffee cup
+    public void SpeedUp(int manipulateSpeed)
     {
         StartCoroutine(DeactivateSpeedUp());
-        _speed += increaseSpeed;
+        _speed += manipulateSpeed;
         
         
         
     }
+   
     IEnumerator DeactivateSpeedUp()
     {
         yield return new WaitForSeconds(_powerUpTimeout);
-        _speed -= GameObject.FindWithTag("Powerup").GetComponent<PowerUpsCollectible>().increaseSpeed;  
-        
+        _speed -= GameObject.FindWithTag("Powerup").GetComponent<PowerUpsCollectible>().manipulateSpeed;
+        //_speed -= gameObject.GetComponent<PowerUpsCollectible>().manipulateSpeed;
         //problem remains this debug gives out that increased speed is 5 and not 7
-        Debug.Log("increasedSpeed = " + GameObject.FindWithTag("Powerup").GetComponent<PowerUpsCollectible>().increaseSpeed);
+        //could be fixed by attaching another gameobject to this script but not a nice solution
+        
+        Debug.Log("increasedSpeed = " + GameObject.FindWithTag("Powerup").GetComponent<PowerUpsCollectible>().manipulateSpeed);
     }
 
-    
+    public void SlowDown(int manipulateSpeed)
+    {
+        StartCoroutine(DeactivateSlowDown());
+        _speed -= manipulateSpeed;
+        if (_speed < 0)
+        {
+            _speed = 0;
+        }
+    }
+    IEnumerator DeactivateSlowDown()
+    {
+        yield return new WaitForSeconds(_powerUpTimeout);
+        _speed += GameObject.FindWithTag("Powerup").GetComponent<PowerUpsCollectible>().manipulateSpeed;
+        Debug.Log("manipulateSpeed = " + GameObject.FindWithTag("Powerup").GetComponent<PowerUpsCollectible>().manipulateSpeed);
+    }
 }
