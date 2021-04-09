@@ -10,10 +10,21 @@ public class Corona : MonoBehaviour
     [SerializeField] private float _virusSpeed = 3f;
     [SerializeField] private float _horizontalVirusSpeed = 20f;
 
+
+    [SerializeField] 
+    private bool _freezeCorona = false;
+
+    [SerializeField]
+    private float _freezeTime = 5;
+   
+
     void Update()
     {
-        transform.Translate(Vector3.down * (Time.deltaTime * _virusSpeed));
-        
+        if (!_freezeCorona)
+        {
+            transform.Translate(Vector3.down * (Time.deltaTime * _virusSpeed));
+        }
+
         if (name.Contains("B117"))
         {
             transform.Translate(Vector3.right * (Random.Range(-1f,1f) * Time.deltaTime * _horizontalVirusSpeed));    
@@ -26,6 +37,20 @@ public class Corona : MonoBehaviour
             
         }
     }
+    
+    public void FreezeCorona()
+    {
+        StartCoroutine(StopFreezeCorona());
+        _freezeCorona = true;
+
+    }
+
+    IEnumerator StopFreezeCorona()
+    {
+        yield return new WaitForSeconds(_freezeTime);
+        _freezeCorona = false;
+    }
+    
     void OnTriggerEnter(Collider other)
     {
         //if player is hit deal damage or kill

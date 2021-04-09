@@ -731,7 +731,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 0ec8c31b4bcb43a4498086d9654ac218, type: 2}
+  - {fileID: 2100000, guid: 01e2263a2b1a42b4bb2b0ebd74ce2909, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -770,7 +770,7 @@ Transform:
   m_GameObject: {fileID: 1398192018}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 10}
-  m_LocalScale: {x: 37, y: 21, z: 0}
+  m_LocalScale: {x: 29.96926, y: 21, z: 0}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 5
@@ -912,8 +912,9 @@ MonoBehaviour:
   - {fileID: 3077341228112937560, guid: 41dbc95e91202914495ed1a2bd9501f0, type: 3}
   - {fileID: 5923000844506137882, guid: 8af99eae3fe13dc4f8095710986b99e3, type: 3}
   - {fileID: 77510757830760940, guid: 6dae35c861ad0734a9f1bda4ca15b230, type: 3}
-  _delay: 3
-  _powerUpsSpawnRate: 10
+  - {fileID: 133176248760572166, guid: 6d64ed7edc40b7c41a335cad8c219456, type: 3}
+  _delay: 7
+  _powerUpsSpawnRate: 2
   _normalCoronaSpawnChance: 0
   _chanceModifier: 0.03
   _spawningOn: 1
