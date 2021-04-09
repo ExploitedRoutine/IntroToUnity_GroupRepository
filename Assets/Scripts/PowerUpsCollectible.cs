@@ -18,21 +18,31 @@ public class PowerUpsCollectible : MonoBehaviour
     public int manipulateSpeed = 5;
     
     [SerializeField] 
-    private float _spinSpeed = 20f;
+    private float _spinSpeed = 40f;
 
     private void Start()
     {
         //rotate addLife object by 90° 
+        if (name.Contains("AddLive_Powerup"))
+        {
+            transform.Rotate(new Vector3(90f,0f,180f), relativeTo:Space.Self);
+            //var transformEulerAngles = transform.eulerAngles;
+            //transformEulerAngles.y += 180;
+        } 
     }
 
     // called once per frame
     void Update()
     {
-        transform.Translate(Vector3.down * _speed * Time.deltaTime);
+        if (name.Contains("AddLive"))
+        { 
+            transform.Translate(Vector3.forward * (_speed * Time.deltaTime));
+        }
         
-        
+
         if (!name.Contains("AddLive"))
         {
+            transform.Translate(Vector3.down * _speed * Time.deltaTime);
             transform.Rotate(new Vector3(0f, _spinSpeed * Time.deltaTime, 0f), Space.Self);
         }
        
@@ -51,7 +61,7 @@ public class PowerUpsCollectible : MonoBehaviour
             { 
                 GameObject.FindWithTag("Player").GetComponent<Player>().AddLive(extraLives);  
                 Destroy(this.gameObject); 
-            } 
+            }   
             if (name.Contains("UVLight_Powerup")) 
             { 
                 Destroy(this.gameObject); 
@@ -76,6 +86,7 @@ public class PowerUpsCollectible : MonoBehaviour
             {
                 Destroy(this.gameObject);
                 other.GetComponent<Player>().ActivateShield();
+                
             }
             
             //Random powerupfunction
