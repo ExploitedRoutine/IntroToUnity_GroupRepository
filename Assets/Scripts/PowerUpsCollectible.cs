@@ -38,12 +38,15 @@ public class PowerUpsCollectible : MonoBehaviour
         { 
             transform.Translate(Vector3.forward * (_speed * Time.deltaTime));
         }
-        
+
 
         if (!name.Contains("AddLive"))
         {
             transform.Translate(Vector3.down * _speed * Time.deltaTime);
-            transform.Rotate(new Vector3(0f, _spinSpeed * Time.deltaTime, 0f), Space.Self);
+            if (!name.Contains("Freeze_Powerup"))
+            {
+                transform.Rotate(new Vector3(0f, _spinSpeed * Time.deltaTime, 0f), Space.Self);
+            }
         }
        
         if (transform.position.y < -4.5f)
@@ -56,37 +59,44 @@ public class PowerUpsCollectible : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         { 
-            if (name.Contains("AddLive")) 
-            
+            if (name.Contains("AddLive"))
             { 
                 GameObject.FindWithTag("Player").GetComponent<Player>().AddLive(extraLives);  
                 Destroy(this.gameObject); 
             }   
+            
             if (name.Contains("UVLight_Powerup")) 
             { 
                 Destroy(this.gameObject); 
                 other.GetComponent<Player>().ActivatePowerUp(); 
             }
-
+            
             if (name.Contains("SpeedUp_Powerup"))
             {
                 // call public function from player 
                 Destroy(this.gameObject); 
                 other.GetComponent<Player>().SpeedUp(manipulateSpeed);
             }
-
+            
             if (name.Contains("SlowDown_Powerup"))
             {
                 Destroy(this.gameObject);
                 other.GetComponent<Player>().SlowDown(manipulateSpeed);
             }
-
-
+            
             if (name.Contains("Shield_Powerup"))
             {
                 Destroy(this.gameObject);
                 other.GetComponent<Player>().ActivateShield();
                 
+            }
+            
+            // works but only for one virus, alternatively könnten wir die ganze spawn sequence für eine vorrübergehende Zeit aussetzen 
+            if (name.Contains("Freeze_Powerup"))
+            {
+                Destroy(this.gameObject);
+                GameObject.FindWithTag("Virus").GetComponent<Corona>().FreezeCorona();
+                Debug.Log("Collision detected");
             }
             
             //Random powerupfunction

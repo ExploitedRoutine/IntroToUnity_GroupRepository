@@ -251,8 +251,9 @@ public class Player : MonoBehaviour
     }
     IEnumerator DeactivateSlowDown()
     {
+        Debug.Log("manipulateSpeed = " + GameObject.FindWithTag("Powerup").GetComponent<PowerUpsCollectible>().manipulateSpeed);
         yield return new WaitForSeconds(_powerUpTimeout);
         _speed += GameObject.FindWithTag("Powerup").GetComponent<PowerUpsCollectible>().manipulateSpeed;
-        Debug.Log("manipulateSpeed = " + GameObject.FindWithTag("Powerup").GetComponent<PowerUpsCollectible>().manipulateSpeed);
+      
     }
 }
