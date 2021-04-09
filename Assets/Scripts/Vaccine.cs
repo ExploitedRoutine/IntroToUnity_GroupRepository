@@ -5,96 +5,126 @@ using UnityEngine;
 
 public class Vaccine : MonoBehaviour
 {
-    [Header("Vaccine Parameter")]
-    [SerializeField] 
+
+    [SerializeField] private GameObject _player;
+
+    [Header("Vaccine Parameter")] [SerializeField]
     private float _vaccineSpeed = 7f;
-    
-    
-    [SerializeField] 
-    private float _spinSpeed = 20f;
-    
-    [SerializeField] 
-    private bool _rotationOn = true;
-    
+
+
+    [SerializeField] private float _spinSpeed = 20f;
+
+    [SerializeField] private bool _rotationOn = true;
+
+    private Vector3 scaleChange = new Vector3(3.5f, 3.5f, 3.5f);
+
     //[SerializeField] 
     //private float _rotationspeed = 150f;
-    
-   void Update()
-   {
-       
-       if (_rotationOn && !name.Contains("UVLight"))
-       {
-           transform.Rotate(new Vector3(0f, _spinSpeed * Time.deltaTime, 0f), Space.Self);
-       }
-       if (CompareTag("Vaccine"))
-       {
-           transform.Translate(Vector3.up * (Time.deltaTime * _vaccineSpeed));
-           if (transform.position.y > 7f)
-           {
-               Destroy(this.gameObject);
-           }
-       }
-       else
-       {
-           transform.Translate(Vector3.down * (Time.deltaTime * _vaccineSpeed));
-           if (transform.position.y < -7f)
-           {
-               Destroy(this.gameObject);
-           }
-       }
-   }
-   void OnTriggerEnter(Collider other) 
-   {
-       //if player is hit deal damage or kill
-       if (other.CompareTag("Player") && name.Contains("Evil"))
-       {
-           other.GetComponent<Player>().Damage();
-           GameObject.FindWithTag("Player").GetComponent<Player>().RelayScore(1);
-           Destroy(this.gameObject);
-       }
 
-       if (other.CompareTag("Virus"))
-       {
-           
-           if (name.Contains("UVLight"))
-           {
-               Destroy(other.gameObject);
-           }
-           else if (!other.name.Contains("Coronavirus501V2"))
-           
-           {
-               if (name.Contains("B117"))
-               {
-                   GameObject.FindWithTag("Player").GetComponent<Player>().RelayScore(3);
-               }
-               else
-               {
-                   GameObject.FindWithTag("Player").GetComponent<Player>().RelayScore(1);
-               }
-               
-               Destroy(this.gameObject);
-               Destroy(other.gameObject);
-           }
-           
-       }
-       //if vaccine is hit destroy it and the vaccine, If its UV light just destroy virus
-       else if (other.CompareTag("Vaccine"))
-       {
-           if (!other.name.Contains("UVLight"))
-           {
-               Destroy(other.gameObject);
-           }
-   
-           /*if(name.Contains("B117"))
-           {
-               GameObject.FindWithTag("Player").GetComponent<Player>().RelayScore(3);
-           }
-           else
-           {
-               GameObject.FindWithTag("Player").GetComponent<Player>().RelayScore(1);
-           } */
-            
-           Destroy(this.gameObject);
-       }
-   }
+    private void Start()
+    {
+        if (name.Contains("Shield"))
+        {
+            transform.localScale += scaleChange;
+        }
+    }
+
+    void Update()
+    {
+
+        if (_rotationOn && !name.Contains("UVLight"))
+        {
+            transform.Rotate(new Vector3(0f, _spinSpeed * Time.deltaTime, 0f), Space.Self);
+        }
+
+        if (CompareTag("Vaccine") && !name.Contains("Shield"))
+        {
+            transform.Translate(Vector3.up * (Time.deltaTime * _vaccineSpeed));
+            if (transform.position.y > 7f)
+            {
+                Destroy(this.gameObject);
+            }
+
+        }
+        /*else if (name.Contains("Shield"))
+        {
+            transform.position = new Vector3(_player.transform.position.x, _player.transform.position.y, _player.transform.position.z);
+        } */
+        else if (name.Contains("EvilVaccine"))
+        {
+            transform.Translate(Vector3.down * (Time.deltaTime * _vaccineSpeed));
+            if (transform.position.y < -7f)
+            {
+                Destroy(this.gameObject);
+            }
+        }
+    }
+
+    void OnTriggerEnter(Collider other)
+    {
+        //if player is hit deal damage or kill
+        if (name.Contains("Evil"))
+        {
+            if (other.CompareTag("Player"))
+            {
+                other.GetComponent<Player>().Damage();
+                GameObject.FindWithTag("Player").GetComponent<Player>().RelayScore(1);
+                Destroy(this.gameObject);
+            }
+            else if (other.name.Contains("Shield"))
+            {
+                Destroy(other.gameObject);
+                Destroy(this.gameObject);
+                GameObject.FindWithTag("Player").GetComponent<Player>()._isShieldOn = false;
+                GameObject.FindWithTag("Player").GetComponent<Player>().RelayScore(1);
+                Debug.Log("shield is on ?" + GameObject.FindWithTag("Player").GetComponent<Player>()._isShieldOn);
+            }
+
+            else if (other.CompareTag("Virus"))
+            {
+
+                if (name.Contains("UVLight"))
+                {
+                    Destroy(other.gameObject);
+                    GameObject.FindWithTag("Player").GetComponent<Player>().RelayScore(1);
+                }
+                else if (!other.name.Contains("Coronavirus501V2"))
+
+                {
+                    if (name.Contains("B117"))
+                    {
+                        GameObject.FindWithTag("Player").GetComponent<Player>().RelayScore(3);
+                    }
+                    else
+                    {
+                        GameObject.FindWithTag("Player").GetComponent<Player>().RelayScore(1);
+                    }
+
+                    Destroy(this.gameObject);
+                    Destroy(other.gameObject);
+                }
+
+            }
+            //if vaccine is hit destroy it and the vaccine, If its UV light just destroy virus
+            else if (other.CompareTag("Vaccine"))
+            {
+
+                if (!other.name.Contains("UVLight") || !other.name.Contains("Shield"))
+                {
+                    Destroy(other.gameObject);
+                }
+
+                /*if(name.Contains("B117"))
+                {
+                    GameObject.FindWithTag("Player").GetComponent<Player>().RelayScore(3);
+                }
+                else
+                {
+                    GameObject.FindWithTag("Player").GetComponent<Player>().RelayScore(1);
+                } */
+
+                Destroy(this.gameObject);
+            }
+        }
+    }
 }
