@@ -15,8 +15,12 @@ public class AfricanStrain : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.Translate(Vector3.down * (_virusSpeed * Time.deltaTime));
-        Infect();
+
+        if (GameObject.FindWithTag("Player").GetComponent<Player>()._freezeCorona == false)
+        {
+            transform.Translate(Vector3.down * (_virusSpeed * Time.deltaTime));
+            Infect();
+        }
     }
 
     public void Infect()

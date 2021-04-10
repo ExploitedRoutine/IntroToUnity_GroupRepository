@@ -9,16 +9,22 @@ public class Corona : MonoBehaviour
     [Header("Virus Parameter")]
     [SerializeField] private float _virusSpeed = 3f;
     [SerializeField] private float _horizontalVirusSpeed = 20f;
+    
+   
 
     void Update()
     {
-        transform.Translate(Vector3.down * (Time.deltaTime * _virusSpeed));
-        
-        if (name.Contains("B117"))
+        if (GameObject.FindWithTag("Player").GetComponent<Player>()._freezeCorona == false)
         {
-            transform.Translate(Vector3.right * (Random.Range(-1f,1f) * Time.deltaTime * _horizontalVirusSpeed));    
+            transform.Translate(Vector3.down * (Time.deltaTime * _virusSpeed));
+
+
+            if (name.Contains("B117"))
+            {
+                transform.Translate(Vector3.right * (Random.Range(-1f, 1f) * Time.deltaTime * _horizontalVirusSpeed));
+            }
         }
-       
+
         // respawn virus on top of the screen after y threshold
         if (transform.position.y < -4.5f)
         {
@@ -26,6 +32,9 @@ public class Corona : MonoBehaviour
             
         }
     }
+    
+   
+    
     void OnTriggerEnter(Collider other)
     {
         //if player is hit deal damage or kill

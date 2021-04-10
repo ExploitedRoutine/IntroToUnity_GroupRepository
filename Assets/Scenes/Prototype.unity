@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.35611284, g: 0.3574544, b: 0.32554182, a: 1}
+  m_IndirectSpecularColor: {r: 0.3561125, g: 0.3574543, b: 0.3255416, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -436,12 +436,16 @@ MonoBehaviour:
     type: 3}
   _vaccinePrefab: {fileID: 5110569847628786802, guid: b1a830192d47f46459d2c72124356e09,
     type: 3}
+  _shieldPrefab: {fileID: 3155311360029547193, guid: a7694dc549e16cf4198ce8e971cb2515,
+    type: 3}
   _spawnMananger: {fileID: 1792295195}
   _vaccinationRate: 0.3
   _powerUpTimeout: 5
   _vaccines: {fileID: 1194254246}
   _lives: 3
   _isUVOn: 0
+  _isShieldOn: 0
+  _freezeCorona: 0
 --- !u!1 &853350230
 GameObject:
   m_ObjectHideFlags: 0
@@ -728,7 +732,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 0ec8c31b4bcb43a4498086d9654ac218, type: 2}
+  - {fileID: 2100000, guid: 01e2263a2b1a42b4bb2b0ebd74ce2909, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -767,7 +771,7 @@ Transform:
   m_GameObject: {fileID: 1398192018}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 10}
-  m_LocalScale: {x: 37, y: 21, z: 0}
+  m_LocalScale: {x: 29.96926, y: 21, z: 0}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 5
@@ -900,14 +904,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _virusPrefabs:
   - {fileID: 8648252076479157253, guid: 33fda82d499f02e488c938fb98eb592a, type: 3}
-  - {fileID: 4194036090030539871, guid: 4747f77f943d595439e4981f56f5a4b3, type: 3}
   - {fileID: 1143337170452844190, guid: 0597e15dfafc1954080012bf6e533865, type: 3}
+  - {fileID: 4194036090030539871, guid: 4747f77f943d595439e4981f56f5a4b3, type: 3}
   _powerupPrefabs:
   - {fileID: 8667414941288445022, guid: 44d77dfe7f089cf41ae0fb5e1a32dc6e, type: 3}
   - {fileID: 6163400367724597075, guid: 09b1442ed7444d9438304a8115665b15, type: 3}
   - {fileID: 7321737095250070314, guid: e6d3137144f9c944c943f0201ceea0dd, type: 3}
   - {fileID: 3077341228112937560, guid: 41dbc95e91202914495ed1a2bd9501f0, type: 3}
   - {fileID: 5923000844506137882, guid: 8af99eae3fe13dc4f8095710986b99e3, type: 3}
+  - {fileID: 77510757830760940, guid: 6dae35c861ad0734a9f1bda4ca15b230, type: 3}
+  - {fileID: 133176248760572166, guid: 6d64ed7edc40b7c41a335cad8c219456, type: 3}
+  - {fileID: 7854986607205945971, guid: c137c5320c459704c84acf4a1b530746, type: 3}
   _delay: 3
   _powerUpsSpawnRate: 8
   _normalCoronaSpawnChance: 0
