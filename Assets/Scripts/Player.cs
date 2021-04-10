@@ -56,6 +56,11 @@ public class Player : MonoBehaviour
     [SerializeField]
     public bool _isShieldOn = false;
     
+    [SerializeField] 
+    public bool _freezeCorona = false;
+    
+    private Vector3 scaleChange = new Vector3(0.3f, 0.3f, 0.3f);
+    
     
     // called before  first frame update
     void Start()
@@ -225,8 +230,6 @@ public class Player : MonoBehaviour
         StartCoroutine(DeactivateSpeedUp());
         _speed += manipulateSpeed;
         
-        
-        
     }
    
     IEnumerator DeactivateSpeedUp()
@@ -251,9 +254,34 @@ public class Player : MonoBehaviour
     }
     IEnumerator DeactivateSlowDown()
     {
-        Debug.Log("manipulateSpeed = " + GameObject.FindWithTag("Powerup").GetComponent<PowerUpsCollectible>().manipulateSpeed);
+        //Debug.Log("manipulateSpeed = " + GameObject.FindWithTag("Powerup").GetComponent<PowerUpsCollectible>().manipulateSpeed);
         yield return new WaitForSeconds(_powerUpTimeout);
         _speed += GameObject.FindWithTag("Powerup").GetComponent<PowerUpsCollectible>().manipulateSpeed;
       
     }
+    
+    public void FreezeCorona()
+    {
+        _freezeCorona = true;
+        StartCoroutine(StopFreezeCorona());
+    }
+
+    IEnumerator StopFreezeCorona()
+    {
+        yield return new WaitForSeconds(_powerUpTimeout);
+        _freezeCorona = false;
+    }
+
+    public void ScaleUp()
+    {
+        StartCoroutine(DeactivateScaleUp());
+        transform.localScale += scaleChange;
+    }
+
+    IEnumerator DeactivateScaleUp()
+    {
+        yield return new WaitForSeconds(_powerUpTimeout);
+        transform.localScale -= scaleChange;
+    }
+    
 }

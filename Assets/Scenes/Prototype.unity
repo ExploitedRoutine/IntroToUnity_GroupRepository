@@ -445,6 +445,7 @@ MonoBehaviour:
   _lives: 3
   _isUVOn: 0
   _isShieldOn: 0
+  _freezeCorona: 0
 --- !u!1 &853350230
 GameObject:
   m_ObjectHideFlags: 0
@@ -913,8 +914,9 @@ MonoBehaviour:
   - {fileID: 5923000844506137882, guid: 8af99eae3fe13dc4f8095710986b99e3, type: 3}
   - {fileID: 77510757830760940, guid: 6dae35c861ad0734a9f1bda4ca15b230, type: 3}
   - {fileID: 133176248760572166, guid: 6d64ed7edc40b7c41a335cad8c219456, type: 3}
-  _delay: 7
-  _powerUpsSpawnRate: 2
+  - {fileID: 7854986607205945971, guid: c137c5320c459704c84acf4a1b530746, type: 3}
+  _delay: 3
+  _powerUpsSpawnRate: 8
   _normalCoronaSpawnChance: 0
   _chanceModifier: 0.03
   _spawningOn: 1

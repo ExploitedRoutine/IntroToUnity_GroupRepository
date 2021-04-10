@@ -9,27 +9,22 @@ public class Corona : MonoBehaviour
     [Header("Virus Parameter")]
     [SerializeField] private float _virusSpeed = 3f;
     [SerializeField] private float _horizontalVirusSpeed = 20f;
-
-
-    [SerializeField] 
-    private bool _freezeCorona = false;
-
-    [SerializeField]
-    private float _freezeTime = 5;
+    
    
 
     void Update()
     {
-        if (!_freezeCorona)
+        if (GameObject.FindWithTag("Player").GetComponent<Player>()._freezeCorona == false)
         {
             transform.Translate(Vector3.down * (Time.deltaTime * _virusSpeed));
+
+
+            if (name.Contains("B117"))
+            {
+                transform.Translate(Vector3.right * (Random.Range(-1f, 1f) * Time.deltaTime * _horizontalVirusSpeed));
+            }
         }
 
-        if (name.Contains("B117"))
-        {
-            transform.Translate(Vector3.right * (Random.Range(-1f,1f) * Time.deltaTime * _horizontalVirusSpeed));    
-        }
-       
         // respawn virus on top of the screen after y threshold
         if (transform.position.y < -4.5f)
         {
@@ -38,18 +33,7 @@ public class Corona : MonoBehaviour
         }
     }
     
-    public void FreezeCorona()
-    {
-        StartCoroutine(StopFreezeCorona());
-        _freezeCorona = true;
-
-    }
-
-    IEnumerator StopFreezeCorona()
-    {
-        yield return new WaitForSeconds(_freezeTime);
-        _freezeCorona = false;
-    }
+   
     
     void OnTriggerEnter(Collider other)
     {

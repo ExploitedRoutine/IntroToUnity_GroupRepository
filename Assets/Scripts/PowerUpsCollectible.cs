@@ -26,9 +26,18 @@ public class PowerUpsCollectible : MonoBehaviour
         if (name.Contains("AddLive_Powerup"))
         {
             transform.Rotate(new Vector3(90f,0f,180f), relativeTo:Space.Self);
-            //var transformEulerAngles = transform.eulerAngles;
-            //transformEulerAngles.y += 180;
-        } 
+        }
+
+        if (name.Contains("ScaleUp_Powerup"))
+        {
+            transform.Rotate(new Vector3(-90f,0f,0f), relativeTo:Space.Self);
+        }
+
+        if (name.Contains("Shield_Powerup"))
+        {
+            transform.Rotate(new Vector3(0f,180f,0f), relativeTo:Space.Self);
+        }
+        
     }
 
     // called once per frame
@@ -39,8 +48,14 @@ public class PowerUpsCollectible : MonoBehaviour
             transform.Translate(Vector3.forward * (_speed * Time.deltaTime));
         }
 
+        if (name.Contains("ScaleUp_Powerup"))
+        {
+            transform.Translate(Vector3.back * (_speed * Time.deltaTime));
+            transform.Rotate(new Vector3(0f, 0f, _spinSpeed * Time.deltaTime), Space.Self);
+        }
 
-        if (!name.Contains("AddLive"))
+
+        if (!name.Contains("AddLive")  && !name.Contains("ScaleUp_Powerup"))
         {
             transform.Translate(Vector3.down * _speed * Time.deltaTime);
             if (!name.Contains("Freeze_Powerup"))
@@ -91,12 +106,18 @@ public class PowerUpsCollectible : MonoBehaviour
                 
             }
             
-            // works but only for one virus, alternatively könnten wir die ganze spawn sequence für eine vorrübergehende Zeit aussetzen 
+            
             if (name.Contains("Freeze_Powerup"))
             {
                 Destroy(this.gameObject);
-                GameObject.FindWithTag("Virus").GetComponent<Corona>().FreezeCorona();
+                GameObject.FindWithTag("Player").GetComponent<Player>().FreezeCorona();
                 Debug.Log("Collision detected");
+            }
+
+            if (name.Contains("ScaleUp_Powerup"))
+            {
+                Destroy(this.gameObject);
+                other.GetComponent<Player>().ScaleUp();
             }
             
             //Random powerupfunction
@@ -107,7 +128,7 @@ public class PowerUpsCollectible : MonoBehaviour
                 // idea: we could make the list in the spawnmanager public and get the list length that way 
                 // but then we couldnt decide which of these functions should be "inside" the crate. 
                 // by extending the range eg 1, 8 we could also weight th chances a special powerup spawns
-                int powerupIndex = Random.Range(1, 4);
+                int powerupIndex = Random.Range(1, 7);
                 if (powerupIndex == 1)
                 {
                     //add Live
@@ -134,6 +155,27 @@ public class PowerUpsCollectible : MonoBehaviour
                     // slow down powerup
                     Destroy(this.gameObject);
                     other.GetComponent<Player>().SlowDown(manipulateSpeed);
+                }
+                
+                if (powerupIndex == 5)
+                {
+                    // freeze corona powerup
+                    Destroy(this.gameObject);
+                    GameObject.FindWithTag("Player").GetComponent<Player>().FreezeCorona();
+                }
+                
+                if (powerupIndex == 6)
+                {
+                    // activate shield powerup
+                    Destroy(this.gameObject);
+                    other.GetComponent<Player>().ActivateShield();
+                }
+                
+                if (powerupIndex == 7)
+                {
+                    //ScaleUp_powerup
+                    Destroy(this.gameObject);
+                    other.GetComponent<Player>().ScaleUp();
                 }
                 
             }
