@@ -96,10 +96,10 @@ public class Player : MonoBehaviour
     }*/
     
     // player damage
-    public void Damage()
+    public void Damage(int damageInt)
     {
         //reduce _lives by one
-        _lives -= 1;
+        _lives -= damageInt;
         
         
         _uiManager.UpdateHealth(_lives);
@@ -121,8 +121,6 @@ public class Player : MonoBehaviour
     }
     
    
-
-    
     
     public void RelayScore(int score)
     {
@@ -192,8 +190,6 @@ public class Player : MonoBehaviour
         Debug.Log("ActivateShield is called ");
         _isShieldOn = true;
         Instantiate(_shieldPrefab, transform.position + new Vector3(0f, 0f, 0f), Quaternion.identity, this.gameObject.transform);  
-        //_lives++;
-        //_uiManager.UpdateHealth(_lives);
         
     }
     

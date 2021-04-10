@@ -1,16 +1,35 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class AfricanStrain : MonoBehaviour
 {
-    [SerializeField] private float _virusSpeed = 3f;
-    [SerializeField] private GameObject _evilVaccinePrefab;
-    [SerializeField] private float _incidentRate = 2f;
+    [SerializeField]
+    private float _virusSpeed = 3f;
+
+    [SerializeField]
+    private float _bigVirusSpeed = 1f;
+    [SerializeField]
+    private GameObject _evilVaccinePrefab;
+    [SerializeField] 
+    private float _incidentRate = 2f;
 
     private float _canInfect = -1f;
+    
+    [SerializeField]
+    private int _lives = 3;
+    
+    [SerializeField]
+    private Vector3 scaleChange = new Vector3(30f, 30f, 30f);
 
-
+    private void Start()
+    {
+        if (name.Contains("BIGCorona"))
+        {
+            transform.localScale += scaleChange;
+        }
+    }
 
     // Update is called once per frame
     void Update()
@@ -18,9 +37,18 @@ public class AfricanStrain : MonoBehaviour
 
         if (GameObject.FindWithTag("Player").GetComponent<Player>()._freezeCorona == false)
         {
-            transform.Translate(Vector3.down * (_virusSpeed * Time.deltaTime));
+            if (!name.Contains("BIGCorona"))
+            {
+                transform.Translate(Vector3.down * (_virusSpeed * Time.deltaTime));
+                
+            }
+            else
+            {
+                transform.Translate(Vector3.down * (_bigVirusSpeed * Time.deltaTime));
+            }
             Infect();
         }
+        
     }
 
     public void Infect()
@@ -31,23 +59,51 @@ public class AfricanStrain : MonoBehaviour
             Instantiate(_evilVaccinePrefab, transform.position + new Vector3(0f, -0.5f, 0f), Quaternion.identity);
         }
     }
+    
+    
+    public void Damage()
+    {
+        
+        Debug.Log("Damage function called");
+        //reduce _lives by one
+        _lives -= 1; 
+        if (_lives <= 0)
+        {
+            Destroy(this.gameObject);
+        }
+    }
     void OnTriggerEnter(Collider other)
     {
      //if player is hit deal damage or kill
          if (other.CompareTag("Player"))
          {
-             other.GetComponent<Player>().Damage();
-             Destroy(this.gameObject);
+             if (name.Contains("BIGCorona"))
+             {
+                 other.GetComponent<Player>().Damage(_lives);
+                 Destroy(this.gameObject);
+             }
+             else
+             {
+                 other.GetComponent<Player>().Damage(1);
+                 Destroy(this.gameObject);
+             }
          }
      //if vaccine is hit destroy it and the vaccine, If its UV light just destroy virus
-        else if (other.CompareTag("Vaccine")) 
+        
+         else if (other.CompareTag("Vaccine")) 
          {
-             if (!other.name.Contains("UVLight"))
+             if (name.Contains("BIGCorona"))
              {
+                 Damage();
                  Destroy(other.gameObject);
+                 GameObject.FindWithTag("Player").GetComponent<Player>().RelayScore(1);
              }
-             GameObject.FindWithTag("Player").GetComponent<Player>().RelayScore(5);
-             Destroy(this.gameObject);
+             else if (!other.name.Contains("UVLight") && !name.Contains("BIGCorona") )
+             {
+                 Destroy(this.gameObject);
+                 Destroy(other.gameObject);
+                 GameObject.FindWithTag("Player").GetComponent<Player>().RelayScore(2);
+             }
          }
     }
 }

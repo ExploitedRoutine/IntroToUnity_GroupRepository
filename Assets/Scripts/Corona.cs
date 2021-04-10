@@ -40,7 +40,7 @@ public class Corona : MonoBehaviour
         //if player is hit deal damage or kill
         if (other.CompareTag("Player"))
         {
-            other.GetComponent<Player>().Damage();
+            other.GetComponent<Player>().Damage(1);
             Destroy(this.gameObject);
         }
         //if vaccine is hit destroy it and the vaccine, If its UV light just destroy virus

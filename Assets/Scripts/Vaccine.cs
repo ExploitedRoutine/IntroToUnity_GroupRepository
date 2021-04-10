@@ -6,7 +6,7 @@ using UnityEngine;
 public class Vaccine : MonoBehaviour
 {
 
-    [SerializeField] private GameObject _player;
+   
 
     [Header("Vaccine Parameter")] [SerializeField]
     private float _vaccineSpeed = 7f;
@@ -62,12 +62,16 @@ public class Vaccine : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
+        /*if (CompareTag("Vaccine") && other.CompareTag("Vaccine")) 
+        {
+            return;
+        } */
         //if player is hit deal damage or kill
-        if (name.Contains("Evil"))
+         if (name.Contains("Evil"))
         {
             if (other.CompareTag("Player"))
             {
-                other.GetComponent<Player>().Damage();
+                other.GetComponent<Player>().Damage(1);
                 GameObject.FindWithTag("Player").GetComponent<Player>().RelayScore(1);
                 Destroy(this.gameObject);
             }
@@ -77,54 +81,50 @@ public class Vaccine : MonoBehaviour
                 Destroy(this.gameObject);
                 GameObject.FindWithTag("Player").GetComponent<Player>()._isShieldOn = false;
                 GameObject.FindWithTag("Player").GetComponent<Player>().RelayScore(1);
-                Debug.Log("shield is on ?" + GameObject.FindWithTag("Player").GetComponent<Player>()._isShieldOn);
+                //Debug.Log("shield is on ?" + GameObject.FindWithTag("Player").GetComponent<Player>()._isShieldOn);
             }
 
-            else if (other.CompareTag("Virus"))
-            {
-
-                if (name.Contains("UVLight"))
-                {
-                    Destroy(other.gameObject);
-                    GameObject.FindWithTag("Player").GetComponent<Player>().RelayScore(1);
-                }
-                else if (!other.name.Contains("Coronavirus501V2"))
-
-                {
-                    if (name.Contains("B117"))
-                    {
-                        GameObject.FindWithTag("Player").GetComponent<Player>().RelayScore(3);
-                    }
-                    else
-                    {
-                        GameObject.FindWithTag("Player").GetComponent<Player>().RelayScore(1);
-                    }
-
-                    Destroy(this.gameObject);
-                    Destroy(other.gameObject);
-                }
-
-            }
-            //if vaccine is hit destroy it and the vaccine, If its UV light just destroy virus
             else if (other.CompareTag("Vaccine"))
             {
-
-                if (!other.name.Contains("UVLight") || !other.name.Contains("Shield"))
-                {
-                    Destroy(other.gameObject);
-                }
-
-                /*if(name.Contains("B117"))
-                {
-                    GameObject.FindWithTag("Player").GetComponent<Player>().RelayScore(3);
-                }
-                else
-                {
-                    GameObject.FindWithTag("Player").GetComponent<Player>().RelayScore(1);
-                } */
-
                 Destroy(this.gameObject);
+                Destroy(other.gameObject);
+                GameObject.FindWithTag("Player").GetComponent<Player>().RelayScore(1);
             }
         }
+
+        else if (other.CompareTag("Virus"))
+        {
+            if (name.Contains("UVLight"))
+            {
+                Destroy(other.gameObject);
+                GameObject.FindWithTag("Player").GetComponent<Player>().RelayScore(1);
+            }
+
+            else if (other.name.Contains("Coronavirus501V2") || other.name.Contains("Coronavirus"))
+            {
+                
+                Destroy(this.gameObject);
+                Destroy(other.gameObject);
+                GameObject.FindWithTag("Player").GetComponent<Player>().RelayScore(1);
+            }
+           
+            else if (other.name.Contains("B117"))
+            {
+                Destroy(this.gameObject);
+                Destroy(other.gameObject);
+                GameObject.FindWithTag("Player").GetComponent<Player>().RelayScore(3);
+            }
+            
+            else if (other.name.Contains("BIGCorona"))
+            {
+                Destroy(this.gameObject);
+                GameObject.FindWithTag("Virus").GetComponent<AfricanStrain>().Damage();
+                GameObject.FindWithTag("Player").GetComponent<Player>().RelayScore(1);
+            }
+        }
+        
+        
+        
+        
     }
 }
