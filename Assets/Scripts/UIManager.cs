@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
@@ -8,7 +9,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] private Text _scoreText;
     [SerializeField] private Text _gameOverText;
     [SerializeField] private Text _healthText;
-    
+
     void Start()
     {
         _gameOverText.gameObject.SetActive(false);
