@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.35611284, g: 0.3574544, b: 0.32554182, a: 1}
+  m_IndirectSpecularColor: {r: 0.3561125, g: 0.3574543, b: 0.3255416, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -242,6 +242,7 @@ MonoBehaviour:
   _scoreText: {fileID: 837318625}
   _gameOverText: {fileID: 2088627279}
   _healthText: {fileID: 1219911618}
+  waitTime: 3
 --- !u!1 &837318623
 GameObject:
   m_ObjectHideFlags: 0

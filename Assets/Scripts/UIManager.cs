@@ -20,10 +20,6 @@ public class UIManager : MonoBehaviour
     private int _score = 0;
     private int _health = 3;
     public float waitTime = 3f;
-    [SerializeField] private Text _scoreText;
-    [SerializeField] private Text _gameOverText;
-    [SerializeField] private Text _healthText;
-
     void Start()
     {
         _gameOverText.gameObject.SetActive(false);
