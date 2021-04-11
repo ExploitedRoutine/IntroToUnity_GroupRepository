@@ -5,23 +5,28 @@ using UnityEngine;
 
 public class AfricanStrain : MonoBehaviour
 {
-    [SerializeField]
-    private float _virusSpeed = 3f;
-
-    [SerializeField]
-    private float _bigVirusSpeed = 1f;
+    
+    [Header("External Components")]
     [SerializeField]
     private GameObject _evilVaccinePrefab;
+   
+    [Header("Virus Parameter")]
+    [SerializeField]
+    private float _virusSpeed = 3f;
+    
+    [SerializeField]
+    private float _bigVirusSpeed = 1f;
+
     [SerializeField] 
     private float _incidentRate = 2f;
 
-    private float _canInfect = -1f;
-    
     [SerializeField]
     private int _lives = 3;
-    
+
     [SerializeField]
     private Vector3 scaleChange = new Vector3(30f, 30f, 30f);
+    
+    private float _canInfect = -1f;
 
     private void Start()
     {
@@ -51,7 +56,7 @@ public class AfricanStrain : MonoBehaviour
         
     }
 
-    public void Infect()
+    private void Infect()
     {
         if (Time.time > _canInfect)
         {
@@ -70,6 +75,7 @@ public class AfricanStrain : MonoBehaviour
         if (_lives <= 0)
         {
             Destroy(this.gameObject);
+            GameObject.FindWithTag("Player").GetComponent<Player>().RelayScore(5);
         }
     }
     void OnTriggerEnter(Collider other)

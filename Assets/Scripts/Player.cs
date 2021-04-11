@@ -6,13 +6,14 @@ using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour
 {
+    
+  
+ 
+    
+    [Header("External Components")]
     [SerializeField]
     private UIManager _uiManager;
     
-    [SerializeField]
-    private float _speed = 7f;
-    
-    [Header("External Components")]
     [SerializeField] 
     private GameObject _uvLightPrefab;
 
@@ -21,22 +22,20 @@ public class Player : MonoBehaviour
 
     [SerializeField] 
     private GameObject _shieldPrefab;
-
-    //[SerializeField]
-    //private GameObject _addLivePrefab; 
     
     [SerializeField] 
     private SpawnManager _spawnMananger;
 
+    [SerializeField] 
+    private GameObject _vaccines;
+    
     [Header("Vaccine Parameters")]
     [SerializeField] 
     private float _vaccinationRate = 0.3f;
 
-    [SerializeField] 
-    private float _powerUpTimeout = 5f;
+   
 
-    [SerializeField] 
-    private GameObject _vaccines;
+  
     
     [Header("Player Settings")]
     [SerializeField] 
@@ -44,10 +43,9 @@ public class Player : MonoBehaviour
     
     private float _canVaccinate = -1f;
     
+    [SerializeField]
+    private float _speed = 7f;
     
-    //used for player spin/rotation, not functional atm
-    //[SerializeField]
-    //private float _spinSpeed = 6;
     
     [Header("PowerUp Settings")]
     [SerializeField]
@@ -60,6 +58,9 @@ public class Player : MonoBehaviour
     public bool _freezeCorona = false;
     
     private Vector3 scaleChange = new Vector3(0.3f, 0.3f, 0.3f);
+    
+    [SerializeField] 
+    private float _powerUpTimeout = 5f;
     
     
     // called before  first frame update
@@ -80,22 +81,11 @@ public class Player : MonoBehaviour
        // LoadMenuScene();
     }
 
-
-    /*private void LoadMenuScene()
-    {
-        if (_lives <= 0)
-        {
-            StartCoroutine("BackToMenu");
-        }
-    }
-
-    IEnumerator BackToMenu()
-    {
-        yield return new WaitForSeconds(2f);
-        SceneManager.LoadScene("Menu");
-    }*/
     
-    // player damage
+    
+    // Here start the Player Settings Functions
+    
+    //define behaviour when Player is damaged
     public void Damage(int damageInt)
     {
         //reduce _lives by one
@@ -120,8 +110,7 @@ public class Player : MonoBehaviour
         }
     }
     
-   
-    
+    // relays the current score to the UI manageers
     public void RelayScore(int score)
     {
         _uiManager.AddScore(score);
@@ -183,7 +172,10 @@ public class Player : MonoBehaviour
         }
     }
 
+    
+    // Here start the PowerUp functions
 
+    // activate shield with shield powerup
     public void ActivateShield()
     {
         //shieldPrefab does not yet exist
@@ -193,8 +185,6 @@ public class Player : MonoBehaviour
         
     }
     
-    
-    // Here start the PowerUp functions
     
     // add live with first aid kit
     public void AddLive(int extraLives)
@@ -239,6 +229,7 @@ public class Player : MonoBehaviour
         Debug.Log("increasedSpeed = " + GameObject.FindWithTag("Powerup").GetComponent<PowerUpsCollectible>().manipulateSpeed);
     }
 
+    //slows down the player by manipulate speed.     
     public void SlowDown(int manipulateSpeed)
     {
         StartCoroutine(DeactivateSlowDown());
@@ -256,6 +247,7 @@ public class Player : MonoBehaviour
       
     }
     
+    //freezes all the corona viruses in mid air 
     public void FreezeCorona()
     {
         _freezeCorona = true;
@@ -268,6 +260,7 @@ public class Player : MonoBehaviour
         _freezeCorona = false;
     }
 
+    //lets the player double its size
     public void ScaleUp()
     {
         StartCoroutine(DeactivateScaleUp());

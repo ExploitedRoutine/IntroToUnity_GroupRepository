@@ -8,18 +8,20 @@ public class Vaccine : MonoBehaviour
 
    
 
-    [Header("Vaccine Parameter")] [SerializeField]
+    [Header("Vaccine Parameter")] 
+    [SerializeField]
     private float _vaccineSpeed = 7f;
 
+    [SerializeField] 
+    private float _spinSpeed = 50f;
 
-    [SerializeField] private float _spinSpeed = 20f;
-
-    [SerializeField] private bool _rotationOn = true;
+    [SerializeField]
+    private bool _rotationOn = true;
+    
+    
 
     private Vector3 scaleChange = new Vector3(3.5f, 3.5f, 3.5f);
-
-    //[SerializeField] 
-    //private float _rotationspeed = 150f;
+    
 
     private void Start()
     {

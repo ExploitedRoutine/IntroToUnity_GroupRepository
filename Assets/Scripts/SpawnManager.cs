@@ -5,9 +5,6 @@ using UnityEngine;
 public class SpawnManager : MonoBehaviour
 {
     [Header("External Components")]
-    
-    //not necessary - is attached in the _powerupprefabs list
-    //[SerializeField] private GameObject _UVLightPrefab;
     [SerializeField]
     private List<GameObject> _virusPrefabs;
     [SerializeField] 
@@ -20,8 +17,7 @@ public class SpawnManager : MonoBehaviour
     private float _delay = 2f;
     
     [SerializeField] 
-    private float _powerUpsSpawnRate = 30f;
-    
+    private float _powerUpsSpawnRate = 12f;
     
     [Range(0f,1f)]
     [SerializeField] private float _normalCoronaSpawnChance;
@@ -30,8 +26,8 @@ public class SpawnManager : MonoBehaviour
     
     
     //these bools are there in order to make it possible to only spawn powerups or viruses respectively,
-    // _spawningOn enables or deables spawning in general,a bit redundant as we can just enable or deable the spawnmanager in Unity,
-    // but for reasons of completeness is also made it serializable
+    // _spawningOn enables or deables spawning in general
+    [Header("Spawning Settings")]
     [SerializeField]
     private bool _spawningOn = true;
 
@@ -48,8 +44,7 @@ public class SpawnManager : MonoBehaviour
         StartCoroutine(SpawnSystem());
         StartCoroutine(SpawnPowerUp());
     }
-
-    // create corona prefab after certain amount of time
+    
 
     // this function is supposed to ensure that the powerups dont always spawn at the exact same time
     // but more or less (+-3 seconds). It is also used in spawnpowerup(). 
@@ -61,6 +56,7 @@ public class SpawnManager : MonoBehaviour
 
         return powerupSpawnAdjustment;
     }
+    
     
     public void onPlayerDeath()
     {

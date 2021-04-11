@@ -4,11 +4,19 @@ using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
 {
+    
+    
+    [Header("UI Text")]
+    [SerializeField] 
+    private Text _scoreText;
+    [SerializeField] 
+    private Text _gameOverText;
+    [SerializeField]
+    private Text _healthText;
+
+    //Values that are shown in the beginning
     private int _score = 0;
     private int _health = 3;
-    [SerializeField] private Text _scoreText;
-    [SerializeField] private Text _gameOverText;
-    [SerializeField] private Text _healthText;
 
     void Start()
     {

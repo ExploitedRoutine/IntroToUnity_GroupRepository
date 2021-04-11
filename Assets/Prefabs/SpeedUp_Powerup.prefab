@@ -317,5 +317,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _speed: 2
   extraLives: 1
-  increaseSpeed: 5
-  _spinSpeed: 20
+  manipulateSpeed: 5
+  _spinSpeed: 40

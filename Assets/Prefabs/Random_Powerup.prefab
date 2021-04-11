@@ -44,7 +44,7 @@ MonoBehaviour:
   _speed: 2
   extraLives: 1
   manipulateSpeed: 5
-  _spinSpeed: 20
+  _spinSpeed: 40
 --- !u!1001 &2775272973473990203
 PrefabInstance:
   m_ObjectHideFlags: 0

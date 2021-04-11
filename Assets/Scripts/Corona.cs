@@ -7,8 +7,10 @@ using Random = UnityEngine.Random;
 public class Corona : MonoBehaviour
 {
     [Header("Virus Parameter")]
-    [SerializeField] private float _virusSpeed = 3f;
-    [SerializeField] private float _horizontalVirusSpeed = 20f;
+    [SerializeField] 
+    private float _virusSpeed = 3f;
+    [SerializeField] 
+    private float _horizontalVirusSpeed = 20f;
     
    
 

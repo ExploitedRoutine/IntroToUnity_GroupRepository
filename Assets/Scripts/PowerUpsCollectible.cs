@@ -14,7 +14,7 @@ public class PowerUpsCollectible : MonoBehaviour
     [SerializeField]
     private int extraLives = 1;
 
-    [SerializeField]
+    //[SerializeField]
     public int manipulateSpeed = 5;
     
     [SerializeField] 
@@ -57,7 +57,7 @@ public class PowerUpsCollectible : MonoBehaviour
 
         if (!name.Contains("AddLive")  && !name.Contains("ScaleUp_Powerup"))
         {
-            transform.Translate(Vector3.down * _speed * Time.deltaTime);
+            transform.Translate(Vector3.down * (_speed * Time.deltaTime));
             if (!name.Contains("Freeze_Powerup"))
             {
                 transform.Rotate(new Vector3(0f, _spinSpeed * Time.deltaTime, 0f), Space.Self);
@@ -106,7 +106,6 @@ public class PowerUpsCollectible : MonoBehaviour
                 
             }
             
-            
             if (name.Contains("Freeze_Powerup"))
             {
                 Destroy(this.gameObject);
@@ -128,19 +127,23 @@ public class PowerUpsCollectible : MonoBehaviour
                 // idea: we could make the list in the spawnmanager public and get the list length that way 
                 // but then we couldnt decide which of these functions should be "inside" the crate. 
                 // by extending the range eg 1, 8 we could also weight th chances a special powerup spawns
-                int powerupIndex = Random.Range(1, 7);
+                int powerupIndex = Random.Range(1, 10);
+                
+                
                 if (powerupIndex == 1)
-                {
-                    //add Live
-                    GameObject.FindWithTag("Player").GetComponent<Player>().AddLive(extraLives);  
-                    Destroy(this.gameObject); 
-                }
-
-                if (powerupIndex == 2)
                 {
                     // UV light
                     Destroy(this.gameObject); 
                     other.GetComponent<Player>().ActivatePowerUp(); 
+                }
+                
+                
+                
+                if (powerupIndex == 2)
+                {
+                    //add Live
+                    GameObject.FindWithTag("Player").GetComponent<Player>().AddLive(extraLives);  
+                    Destroy(this.gameObject); 
                 }
 
                 if (powerupIndex == 3)
@@ -149,33 +152,33 @@ public class PowerUpsCollectible : MonoBehaviour
                     Destroy(this.gameObject); 
                     other.GetComponent<Player>().SpeedUp(manipulateSpeed);
                 }
-
-                if (powerupIndex == 4)
-                {
-                    // slow down powerup
-                    Destroy(this.gameObject);
-                    other.GetComponent<Player>().SlowDown(manipulateSpeed);
-                }
                 
-                if (powerupIndex == 5)
+                if (powerupIndex == 4)
                 {
                     // freeze corona powerup
                     Destroy(this.gameObject);
                     GameObject.FindWithTag("Player").GetComponent<Player>().FreezeCorona();
                 }
                 
-                if (powerupIndex == 6)
+                if (powerupIndex == 5)
                 {
                     // activate shield powerup
                     Destroy(this.gameObject);
                     other.GetComponent<Player>().ActivateShield();
                 }
                 
-                if (powerupIndex == 7)
+                if (powerupIndex > 5 && powerupIndex < 9)
                 {
                     //ScaleUp_powerup
                     Destroy(this.gameObject);
                     other.GetComponent<Player>().ScaleUp();
+                }
+                
+                if (powerupIndex > 8)
+                {
+                    // slow down powerup
+                    Destroy(this.gameObject);
+                    other.GetComponent<Player>().SlowDown(manipulateSpeed);
                 }
                 
             }
