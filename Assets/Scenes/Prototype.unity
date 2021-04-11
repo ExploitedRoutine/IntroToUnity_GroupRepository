@@ -431,7 +431,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _uiManager: {fileID: 773377747}
-  _speed: 7
   _uvLightPrefab: {fileID: 546654235197725677, guid: 55086119e547cb1448c2ae59893bba37,
     type: 3}
   _vaccinePrefab: {fileID: 5110569847628786802, guid: b1a830192d47f46459d2c72124356e09,
@@ -439,13 +438,14 @@ MonoBehaviour:
   _shieldPrefab: {fileID: 3155311360029547193, guid: a7694dc549e16cf4198ce8e971cb2515,
     type: 3}
   _spawnMananger: {fileID: 1792295195}
-  _vaccinationRate: 0.3
-  _powerUpTimeout: 5
   _vaccines: {fileID: 1194254246}
+  _vaccinationRate: 0.3
   _lives: 3
+  _speed: 7
   _isUVOn: 0
   _isShieldOn: 0
   _freezeCorona: 0
+  _powerUpTimeout: 5
 --- !u!1 &853350230
 GameObject:
   m_ObjectHideFlags: 0
@@ -908,13 +908,15 @@ MonoBehaviour:
   - {fileID: 4194036090030539871, guid: 4747f77f943d595439e4981f56f5a4b3, type: 3}
   - {fileID: 9141204388506587431, guid: 06e1365f3d49d8b4fafb4d229c1fcfdc, type: 3}
   _powerupPrefabs:
-  - {fileID: 8667414941288445022, guid: 44d77dfe7f089cf41ae0fb5e1a32dc6e, type: 3}
   - {fileID: 6163400367724597075, guid: 09b1442ed7444d9438304a8115665b15, type: 3}
   - {fileID: 7321737095250070314, guid: e6d3137144f9c944c943f0201ceea0dd, type: 3}
   - {fileID: 3077341228112937560, guid: 41dbc95e91202914495ed1a2bd9501f0, type: 3}
   - {fileID: 5923000844506137882, guid: 8af99eae3fe13dc4f8095710986b99e3, type: 3}
   - {fileID: 77510757830760940, guid: 6dae35c861ad0734a9f1bda4ca15b230, type: 3}
-  - {fileID: 133176248760572166, guid: 6d64ed7edc40b7c41a335cad8c219456, type: 3}
+  - {fileID: 77510757830760940, guid: 6dae35c861ad0734a9f1bda4ca15b230, type: 3}
+  - {fileID: 8667414941288445022, guid: 44d77dfe7f089cf41ae0fb5e1a32dc6e, type: 3}
+  - {fileID: 8667414941288445022, guid: 44d77dfe7f089cf41ae0fb5e1a32dc6e, type: 3}
+  - {fileID: 7854986607205945971, guid: c137c5320c459704c84acf4a1b530746, type: 3}
   - {fileID: 7854986607205945971, guid: c137c5320c459704c84acf4a1b530746, type: 3}
   _delay: 3
   _powerUpsSpawnRate: 12
