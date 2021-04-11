@@ -14,6 +14,9 @@ public class Player : MonoBehaviour
     [SerializeField]
     private UIManager _uiManager;
     
+    [SerializeField]
+    private PowerUpsCollectible _powerUpsCollectible;
+    
     [SerializeField] 
     private GameObject _uvLightPrefab;
 
@@ -110,7 +113,7 @@ public class Player : MonoBehaviour
         }
     }
     
-    // relays the current score to the UI manageers
+    // relays the current score to the UI managers
     public void RelayScore(int score)
     {
         _uiManager.AddScore(score);
@@ -211,7 +214,7 @@ public class Player : MonoBehaviour
 
     
     // speed up - Coffee cup
-    public void SpeedUp(int manipulateSpeed)
+    public void SpeedUp(float manipulateSpeed)
     {
         StartCoroutine(DeactivateSpeedUp());
         _speed += manipulateSpeed;
@@ -221,32 +224,32 @@ public class Player : MonoBehaviour
     IEnumerator DeactivateSpeedUp()
     {
         yield return new WaitForSeconds(_powerUpTimeout);
-        _speed -= GameObject.FindWithTag("Powerup").GetComponent<PowerUpsCollectible>().manipulateSpeed;
+        //_speed -= GameObject.FindWithTag("Powerup").GetComponent<PowerUpsCollectible>().manipulateSpeed;
         //_speed -= gameObject.GetComponent<PowerUpsCollectible>().manipulateSpeed;
         //problem remains this debug gives out that increased speed is 5 and not 7
         //could be fixed by attaching another gameobject to this script but not a nice solution
-        
+        _speed -= _powerUpsCollectible.manipulateSpeed;
         Debug.Log("increasedSpeed = " + GameObject.FindWithTag("Powerup").GetComponent<PowerUpsCollectible>().manipulateSpeed);
     }
 
     //slows down the player by manipulate speed.     
-    public void SlowDown(int manipulateSpeed)
+    public void SlowDown(float manipulateSpeed)
     {
-        
-        _speed -= manipulateSpeed;
-        if (_speed < 0)
-        {
-            _speed = 0;
-        }
         StartCoroutine(DeactivateSlowDown());
+        _speed -= manipulateSpeed;
+        if (_speed < 2)
+        {
+            _speed = 2;
+        }
+        
     }
     IEnumerator DeactivateSlowDown()
     {
-        Debug.Log("manipulateSpeed = " + GameObject.FindWithTag("Powerup").GetComponent<PowerUpsCollectible>().manipulateSpeed);
+        //Debug.Log("manipulateSpeed = " + GameObject.FindWithTag("Powerup").GetComponent<PowerUpsCollectible>().manipulateSpeed);
         yield return new WaitForSeconds(_powerUpTimeout);
-        _speed += GameObject.FindWithTag("Powerup").GetComponent<PowerUpsCollectible>().manipulateSpeed;
-      
-    }
+        //_speed += GameObject.FindWithTag("Powerup").GetComponent<PowerUpsCollectible>().manipulateSpeed;
+        _speed += _powerUpsCollectible.manipulateSpeed;
+    }   
     
     //freezes all the corona viruses in mid air 
     public void FreezeCorona()
