@@ -232,16 +232,17 @@ public class Player : MonoBehaviour
     //slows down the player by manipulate speed.     
     public void SlowDown(int manipulateSpeed)
     {
-        StartCoroutine(DeactivateSlowDown());
+        
         _speed -= manipulateSpeed;
         if (_speed < 0)
         {
             _speed = 0;
         }
+        StartCoroutine(DeactivateSlowDown());
     }
     IEnumerator DeactivateSlowDown()
     {
-        //Debug.Log("manipulateSpeed = " + GameObject.FindWithTag("Powerup").GetComponent<PowerUpsCollectible>().manipulateSpeed);
+        Debug.Log("manipulateSpeed = " + GameObject.FindWithTag("Powerup").GetComponent<PowerUpsCollectible>().manipulateSpeed);
         yield return new WaitForSeconds(_powerUpTimeout);
         _speed += GameObject.FindWithTag("Powerup").GetComponent<PowerUpsCollectible>().manipulateSpeed;
       
