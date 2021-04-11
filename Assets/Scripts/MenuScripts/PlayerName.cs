@@ -15,7 +15,7 @@ public class PlayerName : MonoBehaviour
 
     private void Update()
     {
-        _nameOfPlayer = PlayerPrefs.GetString("name", "none");
+        _nameOfPlayer = PlayerPrefs.GetString("name", "Anonymous");
         _savedName.text = _nameOfPlayer;
     }
 

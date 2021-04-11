@@ -8,6 +8,7 @@ public class MainMenu : MonoBehaviour
     public void PlayGame()
     {
         //this currently loads our game scene. if we create more levels we will need rework this part
+        PlayerPrefs.DeleteKey("highscore");
         SceneManager.LoadScene("Prototype");
     }
 
