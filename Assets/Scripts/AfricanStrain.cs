@@ -51,9 +51,9 @@ public class AfricanStrain : MonoBehaviour
             {
                 transform.Translate(Vector3.down * (_bigVirusSpeed * Time.deltaTime));
             }
-            Infect();
+            
         }
-        
+        Infect();
     }
 
     private void Infect()
