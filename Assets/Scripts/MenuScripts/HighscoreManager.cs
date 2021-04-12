@@ -9,8 +9,6 @@ public class HighscoreManager : MonoBehaviour
 {
     public GameObject _entryContainer;
     public GameObject _entryTemplate;
-    private List<Transform> highscoreEntryTransformList;
-
 
     private void Start()
     {

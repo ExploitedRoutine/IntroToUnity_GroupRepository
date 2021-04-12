@@ -237,7 +237,8 @@ public class Player : MonoBehaviour
     {
         StartCoroutine(DeactivateSlowDown());
         _speed -= manipulateSpeed;
-        if (_speed < 2)
+        
+        if (_speed < 0)
         {
             _speed = 2;
         }
@@ -247,9 +248,9 @@ public class Player : MonoBehaviour
     {
         //Debug.Log("manipulateSpeed = " + GameObject.FindWithTag("Powerup").GetComponent<PowerUpsCollectible>().manipulateSpeed);
         yield return new WaitForSeconds(_powerUpTimeout);
-        //_speed += GameObject.FindWithTag("Powerup").GetComponent<PowerUpsCollectible>().manipulateSpeed;
-        _speed += _powerUpsCollectible.manipulateSpeed;
-    }   
+        _speed += GameObject.FindWithTag("Powerup").GetComponent<PowerUpsCollectible>().manipulateSpeed;
+
+    }
     
     //freezes all the corona viruses in mid air 
     public void FreezeCorona()

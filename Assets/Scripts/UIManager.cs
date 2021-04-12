@@ -16,6 +16,8 @@ public class UIManager : MonoBehaviour
     [SerializeField]
     private Text _healthText;
 
+    [SerializeField] public string _saveNameAndScore;
+
     //Values that are shown in the beginning
     private int _score = 0;
     private int _health = 3;

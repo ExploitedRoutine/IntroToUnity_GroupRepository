@@ -1149,7 +1149,7 @@ GameObject:
   - component: {fileID: 397801309}
   m_Layer: 0
   m_Name: MainMenu
-  m_TagString: Untagged
+  m_TagString: MainMenu
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4275,7 +4275,7 @@ GameObject:
   - component: {fileID: 1468254291}
   m_Layer: 0
   m_Name: HighscoreMenu
-  m_TagString: Untagged
+  m_TagString: HighscoreSubMenu
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5328,6 +5328,7 @@ GameObject:
   - component: {fileID: 1898700720}
   - component: {fileID: 1898700719}
   - component: {fileID: 1898700718}
+  - component: {fileID: 1898700722}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -5421,6 +5422,20 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &1898700722
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1898700717}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3972a436e196a274fa75caef6cf256ce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _highscoreMenu: {fileID: 1468254289}
+  _mainMenu: {fileID: 397801307}
 --- !u!1 &1918878196
 GameObject:
   m_ObjectHideFlags: 0
