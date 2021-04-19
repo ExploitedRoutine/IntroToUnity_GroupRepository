@@ -36,7 +36,7 @@ public class UIManager : MonoBehaviour
         _healthText.color = healthcolor;
         _healthText.text = "Health: " + health;
 
-        if (health == 0)
+        if (health <= 0)
         {
             PlayerPrefs.SetInt("highscore", _score);
             Debug.Log("Hey " + PlayerPrefs.GetString("name") + " you reached points: "+ _score);

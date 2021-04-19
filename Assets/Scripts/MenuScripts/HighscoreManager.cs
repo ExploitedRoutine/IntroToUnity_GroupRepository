@@ -15,38 +15,83 @@ public class HighscoreManager : MonoBehaviour
         PlayerPrefs.GetString("name");
         PlayerPrefs.GetInt("highscore");
         Debug.Log("Last Player was " + PlayerPrefs.GetString("name") + " with a score of" + PlayerPrefs.GetInt("highscore"));
+        AddToHighscore(PlayerPrefs.GetInt("highscore"),PlayerPrefs.GetString("name"));
+        ParseHighscore();
     }
 
-    private void Awake()
+
+    private void ParseHighscore()
     {
-        
-        for (int i = 0; i < 10; i++)
+        string highscoreList = PlayerPrefs.GetString("highscorelist");
+        string[] highscoreEntryList = highscoreList.Split(';');
+
+        List<string> topTen = new List<string>();
+        Debug.Log(highscoreEntryList.Length);
+        foreach (string highscoreEntry in highscoreEntryList)
         {
-            GameObject entryTransform = Instantiate(_entryTemplate, _entryContainer.transform);
-            entryTransform.gameObject.SetActive(true);
-
-            // remove placeholder from list when loaded
-
-            int rank = i + 1;
-            string rankString;
-            switch (rank)
+            if (highscoreEntry == "")
             {
-                default:
-                    rankString = rank + "th";
+                continue;
+            }
+            string[] nameAndScore = highscoreEntry.Split(':');
+            
+            int index = 0;
+            for (index = 0; index < topTen.Count; index++)
+            {
+                if (index == 10)
+                {
                     break;
-                case 1:
-                    rankString = "1st";
+                }
+                string[] topTenNameAndScore = topTen[index].Split(':');
+
+                
+               // Debug.Log("here is the topten index:" + topTen[index] + "topten.count " + topTen.Count + "index" + index );
+               // Debug.Log("highscorelist" + highscoreList);
+                
+                if (int.Parse(topTenNameAndScore[1]) < int.Parse(nameAndScore[1]))
+                {
                     break;
-                case 2:
-                    rankString = "2nd";
-                    break;
-                case 3:
-                    rankString = "3rd";
-                    break;
+                }
             }
 
-            GameObject.Find("Rank_pos").GetComponent<TextMeshProUGUI>().text = rankString;
-
+            if (index < 10)
+            {
+                topTen.Insert(index, highscoreEntry);
+            }
         }
+
+        int placement = 1;
+        foreach (string topTenEntry in topTen)
+        {
+            GameObject score = Instantiate(_entryTemplate, _entryContainer.transform);
+            string[] topTenNameAndScore = topTenEntry.Split(':');
+            score.GetComponent<score>().SetScore(placement, topTenNameAndScore[0], int.Parse(topTenNameAndScore[1]));
+            placement++;
+
+            if (placement >= 11)
+            {
+                break;
+            }
+        }
+        
+        
+        
     }
+
+    private void AddToHighscore(int highscore, string playername)
+    {
+        if (PlayerPrefs.GetString("highscorelist") != null)
+        {
+            PlayerPrefs.SetString("highscorelist", PlayerPrefs.GetString("highscorelist") + ";" + playername + ":" + highscore); 
+        }
+        else
+        {
+            PlayerPrefs.SetString("highscorelist", playername + ":" + highscore);
+        }
+        
+        PlayerPrefs.DeleteKey("name");
+        PlayerPrefs.DeleteKey("highscore");
+        
+    }
+    
 }

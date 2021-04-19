@@ -9,7 +9,6 @@ public class HighscoreTransition : MonoBehaviour
 {
     public GameObject _highscoreMenu;
     public GameObject _mainMenu;
-    
     private void Awake()
     {
         Debug.Log("Sending player to Highscore table if points greater than 0");
@@ -17,6 +16,7 @@ public class HighscoreTransition : MonoBehaviour
         {
             _highscoreMenu.SetActive(true);
             _mainMenu.SetActive(false);
+            
         }
         
     }
