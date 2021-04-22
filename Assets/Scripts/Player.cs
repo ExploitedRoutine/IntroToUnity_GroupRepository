@@ -181,18 +181,14 @@ public class Player : MonoBehaviour
     // activate shield with shield powerup
     public void ActivateShield()
     {
-        //shieldPrefab does not yet exist
-        Debug.Log("ActivateShield is called ");
         _isShieldOn = true;
-        Instantiate(_shieldPrefab, transform.position + new Vector3(0f, 0f, 0f), Quaternion.identity, this.gameObject.transform);  
-        
+        Instantiate(_shieldPrefab, transform.position + new Vector3(0f, 0f, 0f), Quaternion.identity, this.gameObject.transform);
     }
     
     
     // add live with first aid kit
     public void AddLive(int extraLives)
     {
-        Debug.Log("addlives called");
         _lives += extraLives;
         _uiManager.UpdateHealth(_lives);
         

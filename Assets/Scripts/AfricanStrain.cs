@@ -69,7 +69,6 @@ public class AfricanStrain : MonoBehaviour
     public void Damage()
     {
         
-        Debug.Log("Damage function called");
         //reduce _lives by one
         _lives -= 1; 
         if (_lives <= 0)

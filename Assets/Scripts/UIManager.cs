@@ -27,7 +27,6 @@ public class UIManager : MonoBehaviour
         _gameOverText.gameObject.SetActive(false);
         _scoreText.text = "Score: " + _score;
         _healthText.text = "Health: " + _health;
-        Debug.Log("hello" + PlayerPrefs.GetString("name"));
     }
 
     public void UpdateHealth(int health)
@@ -39,14 +38,12 @@ public class UIManager : MonoBehaviour
         if (health <= 0)
         {
             PlayerPrefs.SetInt("highscore", _score);
-            Debug.Log("Hey " + PlayerPrefs.GetString("name") + " you reached points: "+ _score);
             StartCoroutine(BackToMenu(waitTime));
         }
     }
 
     IEnumerator BackToMenu(float waitTime)
     {
-        Debug.Log("Going back to menu in 3s...");
         yield return new WaitForSeconds(waitTime);
         SceneManager.LoadScene("Menu");
     }

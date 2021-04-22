@@ -26,7 +26,7 @@ public class SpawnManager : MonoBehaviour
     
     
     //these bools are there in order to make it possible to only spawn powerups or viruses respectively,
-    // _spawningOn enables or deables spawning in general
+    // _spawningOn enables or disables spawning in general
     [Header("Spawning Settings")]
     [SerializeField]
     private bool _spawningOn = true;

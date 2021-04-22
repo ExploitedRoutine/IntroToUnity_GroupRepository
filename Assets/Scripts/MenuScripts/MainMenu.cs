@@ -14,7 +14,6 @@ public class MainMenu : MonoBehaviour
     
     public void QuitGame()
     {
-        Debug.Log("Checking whether game can be closed. Seeing this means it works :P");
         Application.Quit();
     }
 
