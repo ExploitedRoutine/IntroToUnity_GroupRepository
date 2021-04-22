@@ -248,7 +248,8 @@ public class Player : MonoBehaviour
     {
         //Debug.Log("manipulateSpeed = " + GameObject.FindWithTag("Powerup").GetComponent<PowerUpsCollectible>().manipulateSpeed);
         yield return new WaitForSeconds(_powerUpTimeout);
-        _speed += GameObject.FindWithTag("Powerup").GetComponent<PowerUpsCollectible>().manipulateSpeed;
+        _speed += _powerUpsCollectible.manipulateSpeed;
+        //GameObject.FindWithTag("Powerup").GetComponent<PowerUpsCollectible>().manipulateSpeed;
 
     }
     
