@@ -23,7 +23,7 @@ public class Corona : MonoBehaviour
 
             if (name.Contains("B117"))
             {
-                transform.Translate(Vector3.right * (Random.Range(-1f, 1f) * Time.deltaTime * _horizontalVirusSpeed));
+                transform.Translate(Vector3.right * (Random.Range(-5f, 5f) * Time.deltaTime * _horizontalVirusSpeed));
             }
         }
 

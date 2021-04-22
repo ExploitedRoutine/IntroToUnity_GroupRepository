@@ -42,7 +42,7 @@ public class Player : MonoBehaviour
     
     [Header("Player Settings")]
     [SerializeField] 
-    private int _lives = 3;
+    private int _lives = 5;
     
     private float _canVaccinate = -1f;
     
@@ -163,14 +163,14 @@ public class Player : MonoBehaviour
         {
             transform.position = new Vector3(transform.position.x, -4.5f, 0);
         }
-        if (transform.position.x < -6.5f)
+        if (transform.position.x < -8f)
         {
-            transform.position = new Vector3(6.5f, transform.position.y, 0);
+            transform.position = new Vector3(8f, transform.position.y, 0);
             //transform.rotation = Quaternion.identity;
         }
-        else if (transform.position.x > 6.5f)
+        else if (transform.position.x > 8f)
         {
-            transform.position = new Vector3(-6.5f, transform.position.y, 0);
+            transform.position = new Vector3(-8f, transform.position.y, 0);
             //transform.rotation = Quaternion.identity;
         }
     }
@@ -181,8 +181,12 @@ public class Player : MonoBehaviour
     // activate shield with shield powerup
     public void ActivateShield()
     {
-        _isShieldOn = true;
-        Instantiate(_shieldPrefab, transform.position + new Vector3(0f, 0f, 0f), Quaternion.identity, this.gameObject.transform);
+        if (_isShieldOn == false)
+        {
+            _isShieldOn = true;
+            Instantiate(_shieldPrefab, transform.position + new Vector3(0f, 0f, 0f), Quaternion.identity, this.gameObject.transform);
+        }
+        
     }
     
     

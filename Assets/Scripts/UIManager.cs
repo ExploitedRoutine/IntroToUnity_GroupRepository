@@ -20,7 +20,7 @@ public class UIManager : MonoBehaviour
 
     //Values that are shown in the beginning
     private int _score = 0;
-    private int _health = 3;
+    private int _health = 5;
     public float waitTime = 3f;
     void Start()
     {
@@ -31,7 +31,7 @@ public class UIManager : MonoBehaviour
 
     public void UpdateHealth(int health)
     {
-        Color healthcolor = Color32.Lerp(Color.red, Color.green, Mathf.Clamp01(health));
+        Color healthcolor = Color32.Lerp(Color.red, Color.yellow, Mathf.Clamp01(health));
         _healthText.color = healthcolor;
         _healthText.text = "Health: " + health;
 

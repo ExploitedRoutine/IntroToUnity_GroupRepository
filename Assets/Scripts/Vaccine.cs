@@ -8,10 +8,10 @@ public class Vaccine : MonoBehaviour
 
     [Header("Vaccine Parameter")] 
     [SerializeField]
-    private float _vaccineSpeed = 7f;
+    private float _vaccineSpeed = 20f;
 
     [SerializeField] 
-    private float _spinSpeed = 50f;
+    private float _spinSpeed = 20f;
 
     [SerializeField]
     private bool _rotationOn = true;

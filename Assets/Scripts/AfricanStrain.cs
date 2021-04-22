@@ -35,8 +35,7 @@ public class AfricanStrain : MonoBehaviour
             transform.localScale += scaleChange;
         }
     }
-
-    // Update is called once per frame
+    
     void Update()
     {
 
@@ -53,6 +52,12 @@ public class AfricanStrain : MonoBehaviour
             }
             
         }
+        if (transform.position.y < -6f)
+        {
+            transform.position = new Vector3(UnityEngine.Random.Range(-8.5f, 8.5f), 4.5f, 0f);
+            
+        }
+        
         Infect();
     }
 
@@ -61,7 +66,7 @@ public class AfricanStrain : MonoBehaviour
         if (Time.time > _canInfect)
         {
             _canInfect = Time.time + _incidentRate;
-            Instantiate(_evilVaccinePrefab, transform.position + new Vector3(0f, -0.5f, 0f), Quaternion.identity);
+            Instantiate(_evilVaccinePrefab, transform.position + new Vector3(0f, -0.5f, 0f), Quaternion.identity, GameObject.FindWithTag("Spawner").transform);
         }
     }
     

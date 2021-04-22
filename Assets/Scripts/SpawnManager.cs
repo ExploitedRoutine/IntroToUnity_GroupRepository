@@ -17,12 +17,12 @@ public class SpawnManager : MonoBehaviour
     private float _delay = 2f;
     
     [SerializeField] 
-    private float _powerUpsSpawnRate = 12f;
+    private float _powerUpsSpawnRate = 18f;
     
     [Range(0f,1f)]
     [SerializeField] private float _normalCoronaSpawnChance;
     [Range(0f,1f)]
-    [SerializeField] private float _chanceModifier = 0.01f;
+    [SerializeField] private float _chanceModifier = 0.03f;
     
     
     //these bools are there in order to make it possible to only spawn powerups or viruses respectively,
@@ -45,17 +45,20 @@ public class SpawnManager : MonoBehaviour
         StartCoroutine(SpawnPowerUp());
     }
     
+    
+    
 
     // this function is supposed to ensure that the powerups dont always spawn at the exact same time
     // but more or less (+-3 seconds). It is also used in spawnpowerup(). 
     //UPDATE: not essential anymore, function can be removed if deemed unnecessary
     // NOT USED AT THE MOMENT
-    private float _randomizePowerupSpawnRate()
+    private float _randomizeVirusSpawnRate()
     {
-        float powerupSpawnAdjustment = Random.Range(-3f, 3f);
+        float randomVirusSpawnRate = Random.Range(-2f, 0f);
 
-        return powerupSpawnAdjustment;
+        return randomVirusSpawnRate;
     }
+    
     
     
     public void onPlayerDeath()
@@ -91,11 +94,10 @@ public class SpawnManager : MonoBehaviour
         if (!_spawningOn) yield break;
         while (_coronaSpawnOn)
         {
-            //Random.Range(0f, 1f);
             // spawn a new virus
-            Instantiate(_virusPrefabs[SelectVirusIndex()], new Vector3(Random.Range(-6.0f, 6.0f), 4.5f, 0f), Quaternion.identity, this.transform);
+            Instantiate(_virusPrefabs[SelectVirusIndex()], new Vector3(Random.Range(-7.0f, 7.0f), 4.5f, 0f), Quaternion.identity, this.transform);
             // suspend execution for 2 seconds
-            yield return new WaitForSeconds(_delay);
+            yield return new WaitForSeconds(_delay + _randomizeVirusSpawnRate());
         }
         // this expression is true as long as the game is running.
 
@@ -106,7 +108,7 @@ public class SpawnManager : MonoBehaviour
         if (!_spawningOn) yield break;
         while (_powerupSpawnOn)
         {
-            Instantiate(_powerupPrefabs[SelectPowerupIndex()], new Vector3(Random.Range(-6.0f, 6.0f), 4.5f, 0f), Quaternion.identity, this.transform);
+            Instantiate(_powerupPrefabs[SelectPowerupIndex()], new Vector3(Random.Range(-7.0f, 7.0f), 4.5f, 0f), Quaternion.identity, this.transform);
             yield return new WaitForSeconds(_powerUpsSpawnRate);
         }
     }
