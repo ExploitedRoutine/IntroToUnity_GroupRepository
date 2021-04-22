@@ -11,7 +11,7 @@ public class HighscoreTransition : MonoBehaviour
     public GameObject _mainMenu;
     private void Awake()
     {
-        Debug.Log("Sending player to Highscore table if points greater than 0");
+        // if score > 0 transition to highscore screen
         if (PlayerPrefs.GetInt("highscore") != 0)
         {
             _highscoreMenu.SetActive(true);

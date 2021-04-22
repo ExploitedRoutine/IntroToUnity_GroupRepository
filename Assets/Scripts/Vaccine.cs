@@ -6,8 +6,6 @@ using UnityEngine;
 public class Vaccine : MonoBehaviour
 {
 
-   
-
     [Header("Vaccine Parameter")] 
     [SerializeField]
     private float _vaccineSpeed = 7f;
@@ -64,12 +62,7 @@ public class Vaccine : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        /*if (CompareTag("Vaccine") && other.CompareTag("Vaccine")) 
-        {
-            return;
-        } */
-        //if player is hit deal damage or kill
-         if (name.Contains("Evil"))
+        if (name.Contains("Evil"))
         {
             if (other.CompareTag("Player"))
             {
@@ -83,7 +76,6 @@ public class Vaccine : MonoBehaviour
                 Destroy(this.gameObject);
                 GameObject.FindWithTag("Player").GetComponent<Player>()._isShieldOn = false;
                 GameObject.FindWithTag("Player").GetComponent<Player>().RelayScore(1);
-                //Debug.Log("shield is on ?" + GameObject.FindWithTag("Player").GetComponent<Player>()._isShieldOn);
             }
 
             else if (other.CompareTag("Vaccine"))

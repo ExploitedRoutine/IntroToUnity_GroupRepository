@@ -23,6 +23,5 @@ public class PlayerName : MonoBehaviour
     {
         _saveName = _inputText.text;
         PlayerPrefs.SetString("name", _saveName);
-        Debug.Log("Hello " + _saveName + "! Let's Play!");
     }
 }

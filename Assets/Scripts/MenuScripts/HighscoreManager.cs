@@ -12,21 +12,21 @@ public class HighscoreManager : MonoBehaviour
 
     private void Start()
     {
-        PlayerPrefs.GetString("name");
-        PlayerPrefs.GetInt("highscore");
-        Debug.Log("Last Player was " + PlayerPrefs.GetString("name") + " with a score of" + PlayerPrefs.GetInt("highscore"));
         AddToHighscore(PlayerPrefs.GetInt("highscore"),PlayerPrefs.GetString("name"));
         ParseHighscore();
+
+
     }
 
 
     private void ParseHighscore()
     {
+        
+        
         string highscoreList = PlayerPrefs.GetString("highscorelist");
         string[] highscoreEntryList = highscoreList.Split(';');
-
+    
         List<string> topTen = new List<string>();
-        Debug.Log(highscoreEntryList.Length);
         foreach (string highscoreEntry in highscoreEntryList)
         {
             if (highscoreEntry == "")
@@ -43,10 +43,6 @@ public class HighscoreManager : MonoBehaviour
                     break;
                 }
                 string[] topTenNameAndScore = topTen[index].Split(':');
-
-                
-               // Debug.Log("here is the topten index:" + topTen[index] + "topten.count " + topTen.Count + "index" + index );
-               // Debug.Log("highscorelist" + highscoreList);
                 
                 if (int.Parse(topTenNameAndScore[1]) < int.Parse(nameAndScore[1]))
                 {
@@ -72,9 +68,8 @@ public class HighscoreManager : MonoBehaviour
             {
                 break;
             }
+
         }
-        
-        
         
     }
 
@@ -93,5 +88,5 @@ public class HighscoreManager : MonoBehaviour
         PlayerPrefs.DeleteKey("highscore");
         
     }
-    
+
 }
