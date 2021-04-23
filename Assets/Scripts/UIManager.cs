@@ -37,6 +37,7 @@ public class UIManager : MonoBehaviour
 
         if (health <= 0)
         {
+            _healthText.text = "Health: " + 0;
             PlayerPrefs.SetInt("highscore", _score);
             StartCoroutine(BackToMenu(waitTime));
         }
