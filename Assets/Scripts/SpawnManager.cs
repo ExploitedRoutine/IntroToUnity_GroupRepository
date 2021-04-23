@@ -52,7 +52,7 @@ public class SpawnManager : MonoBehaviour
     // but more or less (+-3 seconds).
     private float _randomizeVirusSpawnRate()
     {
-        float randomVirusSpawnRate = Random.Range(-2f, 0f);
+        float randomVirusSpawnRate = Random.Range(-1f, 1f);
 
         return randomVirusSpawnRate;
     }
