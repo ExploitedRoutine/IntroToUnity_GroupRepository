@@ -80,8 +80,12 @@ public class Vaccine : MonoBehaviour
 
             else if (other.CompareTag("Vaccine"))
             {
+                if (!other.name.Contains("UVLight"))
+                {
+                    Destroy(other.gameObject);
+                }
                 Destroy(this.gameObject);
-                Destroy(other.gameObject);
+                
                 GameObject.FindWithTag("Player").GetComponent<Player>().RelayScore(1);
             }
         }
@@ -92,6 +96,13 @@ public class Vaccine : MonoBehaviour
             {
                 Destroy(other.gameObject);
                 GameObject.FindWithTag("Player").GetComponent<Player>().RelayScore(1);
+            }
+            else if (name.Contains("Shield"))
+            {
+                Destroy(this.gameObject);
+                Destroy(other.gameObject);
+                GameObject.FindWithTag("Player").GetComponent<Player>().RelayScore(1);
+                GameObject.FindWithTag("Player").GetComponent<Player>()._isShieldOn = false;
             }
 
             else if (other.name.Contains("Coronavirus501V2") || other.name.Contains("Coronavirus"))
@@ -116,9 +127,5 @@ public class Vaccine : MonoBehaviour
                 GameObject.FindWithTag("Player").GetComponent<Player>().RelayScore(1);
             }
         }
-        
-        
-        
-        
     }
 }

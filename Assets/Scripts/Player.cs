@@ -94,10 +94,11 @@ public class Player : MonoBehaviour
         //reduce _lives by one
         _lives -= damageInt;
         
-        
         _uiManager.UpdateHealth(_lives);
+        
         if (_lives <= 0)
         {
+            _lives = 0;
             if (_spawnMananger != null)
             {
                 _spawnMananger.onPlayerDeath();
@@ -181,6 +182,7 @@ public class Player : MonoBehaviour
     // activate shield with shield powerup
     public void ActivateShield()
     {
+        
         if (_isShieldOn == false)
         {
             _isShieldOn = true;

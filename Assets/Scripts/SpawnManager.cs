@@ -48,10 +48,8 @@ public class SpawnManager : MonoBehaviour
     
     
 
-    // this function is supposed to ensure that the powerups dont always spawn at the exact same time
-    // but more or less (+-3 seconds). It is also used in spawnpowerup(). 
-    //UPDATE: not essential anymore, function can be removed if deemed unnecessary
-    // NOT USED AT THE MOMENT
+    // this function is supposed to ensure that the viruses dont always spawn at the exact same time and thus form a consistent line
+    // but more or less (+-3 seconds).
     private float _randomizeVirusSpawnRate()
     {
         float randomVirusSpawnRate = Random.Range(-2f, 0f);

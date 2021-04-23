@@ -50,6 +50,10 @@ public class Corona : MonoBehaviour
         {
             if (!other.name.Contains("UVLight"))
             {
+                if (other.name.Contains("Shield"))
+                {
+                    GameObject.FindWithTag("Player").GetComponent<Player>()._isShieldOn = false;
+                }
                 Destroy(other.gameObject);
             }
 
