@@ -46,10 +46,7 @@ public class Vaccine : MonoBehaviour
             }
 
         }
-        /*else if (name.Contains("Shield"))
-        {
-            transform.position = new Vector3(_player.transform.position.x, _player.transform.position.y, _player.transform.position.z);
-        } */
+        
         else if (name.Contains("EvilVaccine"))
         {
             transform.Translate(Vector3.down * (Time.deltaTime * _vaccineSpeed));

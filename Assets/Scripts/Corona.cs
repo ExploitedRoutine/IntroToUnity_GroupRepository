@@ -61,10 +61,6 @@ public class Corona : MonoBehaviour
             {
                 GameObject.FindWithTag("Player").GetComponent<Player>().RelayScore(3);
             }
-            else
-            {
-                GameObject.FindWithTag("Player").GetComponent<Player>().RelayScore(1);
-            }
             Destroy(this.gameObject);
         }
     }
