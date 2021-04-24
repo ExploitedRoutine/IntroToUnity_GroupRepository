@@ -104,8 +104,16 @@ public class AfricanStrain : MonoBehaviour
          {
              if (name.Contains("BIGCorona"))
              {
-                 Damage();
-                 Destroy(other.gameObject);
+                 if (!other.name.Contains("UVLight"))
+                 {
+                     Damage();
+                     Destroy(other.gameObject);
+                     
+                 }
+                 else
+                 {
+                     Destroy(this.gameObject);
+                 }
                  GameObject.FindWithTag("Player").GetComponent<Player>().RelayScore(1);
              }
              else if (!other.name.Contains("UVLight") && !name.Contains("BIGCorona") )
